@@ -1,18 +1,23 @@
 // External Libraries
 import React, { useEffect, useState } from 'react';
+import { BsGrid, BsTable } from "react-icons/bs";
 import { Heading, TypographyColor, TypographyType, TypographyWeight } from './ui/typography/Heading';
 import Search from './ui/search/Search';
 import { Button, ButtonSize, ButtonTheme, ButtonVariant } from './ui/button/Button';
 import * as Constants from '../utils/Constants'
 import { BiSolidDownArrow, BiSolidUpArrow } from 'react-icons/bi';
 import { MdDeleteSweep, MdModeEdit } from 'react-icons/md';
+import SearchBar from './ui/search/SearchBar';
 
 // CSS
 // import '../styles/main.css';
 
 // Components
+interface TenantsProps {
+    setGridView: (gridView: boolean) => void;
+}
 
-const Tenants = () => {
+const Tenants = ({ setGridView }: TenantsProps) => {
     const [buttonState, setButtonState] = useState<[number, boolean]>([0, false]);
     const [tenants, setTenants] = useState(Constants.tenants)
     // function for sorting
@@ -46,15 +51,48 @@ const Tenants = () => {
 
     return (
         <div className='col-lg-12 col-md-12 col-sm-12 col-12 z-index-0 px-0 d-flex flex-column justify-content-center align-items-center ' style={{ height: '91vh' }}>
-            <div className="row w-100 d-flex flex-row justify-content-between align-items-center px-2 m-auto" style={{ height: '10%' }}>
+            {/* <div className="d-flex flex-row justify-content-center align-items-center m-auto" style={{ height: '10%', width: '97%'}}>
                 <Heading
                     title='Tenants'
                     type={TypographyType.h2}
                     color={TypographyColor.primary}
                     weight={TypographyWeight.semiBold}
-                    classname='col-2 mb-0 text-start'
+                    classname='mb-0 text-start'
                 />
-            </div>
+                <SearchBar classname='w-75' />
+                <Button
+                    theme={ButtonTheme.muted}
+                    size={ButtonSize.default}
+                    variant={ButtonVariant.transparent}
+                    classname='p-0 padding-right-1'
+                    onClick={() => setGridView(true)}
+                >
+                    <BsGrid className="fs-25" />
+                </Button>
+            </div> */}
+            <div className="d-flex flex-row justify-content-between align-items-center" style={{ height: '10%', width: '97%' }}>
+                <div className="w-25">
+                    <Heading
+                        title='Tenants'
+                        type={TypographyType.h2}
+                        color={TypographyColor.primary}
+                        weight={TypographyWeight.semiBold}
+                        classname='mb-0 text-start'
+                    />
+                </div>
+                <div className='d-flex flex-row justify-content-end w-25'>
+                    <SearchBar classname='w-75' />
+                    <Button
+                        theme={ButtonTheme.muted}
+                        size={ButtonSize.default}
+                        variant={ButtonVariant.transparent}
+                        classname=''
+                        onClick={() => setGridView(true)}
+                    >
+                        <BsGrid className="fs-25" />
+                    </Button>
+                </div>
+            </div> 
             {/* <hr className='my-0 w-100' /> */}
             <div className='d-flex flex-row justify-content-center align-items-center' style={{ height: '90%', width: '100%' }}>
                 <div className="tenant-table-container">

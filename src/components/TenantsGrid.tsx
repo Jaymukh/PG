@@ -1,5 +1,6 @@
 // External Libraries
 import React, { useEffect, useState } from 'react';
+import { BsGrid, BsTable } from "react-icons/bs";
 import { Heading, TypographyColor, TypographyType, TypographyWeight } from './ui/typography/Heading';
 import Search from './ui/search/Search';
 import { Button, ButtonSize, ButtonTheme, ButtonVariant } from './ui/button/Button';
@@ -16,7 +17,11 @@ import SearchBar from './ui/search/SearchBar';
 
 // Components
 
-const TenantsGrid = () => {
+interface TenantsGridProps {
+    setGridView: (gridView: boolean) => void;
+}
+
+const TenantsGrid = ({ setGridView }: TenantsGridProps) => {
     const [buttonState, setButtonState] = useState<[number, boolean]>([0, false]);
     const [tenants, setTenants] = useState(Constants.tenants);
     const [checkedStates, setCheckedStates] = useState(tenants.map(() => true));
@@ -29,21 +34,34 @@ const TenantsGrid = () => {
 
     return (
         <div className='col-lg-12 col-md-12 col-sm-12 col-12 z-index-0 px-0 d-flex flex-column justify-content-center align-items-center ' style={{ height: '91vh' }}>
-            <div className="w-100 d-flex flex-row justify-content-start align-items-center px-2 m-auto" style={{ height: '10%' }}>
-                <Heading
-                    title='Tenants'
-                    type={TypographyType.h2}
-                    color={TypographyColor.primary}
-                    weight={TypographyWeight.semiBold}
-                    classname='mb-0 text-start'
-                />
-                <SearchBar />
+            <div className="d-flex flex-row justify-content-between align-items-center" style={{ height: '10%', width: '97%' }}>
+                <div className="w-25">
+                    <Heading
+                        title='Tenants'
+                        type={TypographyType.h2}
+                        color={TypographyColor.primary}
+                        weight={TypographyWeight.semiBold}
+                        classname='mb-0 text-start'
+                    />
+                </div>
+                <div className='d-flex flex-row justify-content-end w-25'>
+                    <SearchBar classname='w-75' />
+                    <Button
+                        theme={ButtonTheme.muted}
+                        size={ButtonSize.default}
+                        variant={ButtonVariant.transparent}
+                        classname=''
+                        onClick={() => setGridView(false)}
+                    >
+                        <BsTable className="fs-25" />
+                    </Button>
+                </div>
             </div>
             {/* <hr className='my-0 w-100' /> */}
-            <div className='d-flex flex-row justify-content-start align-items-start' style={{ height: '90%', width: '100%', flexWrap: 'wrap' }}>
+            <div className='d-flex flex-row justify-content-start align-items-start' style={{ height: '90%', width: '97%', flexWrap: 'wrap' }}>
                 {tenants.map((data, index) => (
                     <div className='col-xl-2 col-lg-2 col-md-3 col-sm-12 padding-left-right-0 mb-0'>
-                        <Card size={CardSize.medium} variant={CardVariant.contained} classname='m-2 padding-0 cursor-pointer' >
+                        <Card size={CardSize.medium} variant={CardVariant.contained} classname='m-2 padding-0 cursor-pointer m-0' >
                             <div className='d-flex flex-row justify-content-between align-items-center padding-3'>
                                 <Heading
                                     title={data.name}

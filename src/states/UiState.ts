@@ -24,3 +24,8 @@ export const spinnerLiteState = atom({
     key: 'spinnerLite',
     default: false,
 })
+
+export const sidebarAnchorState = atom<HTMLElement | null>({
+    key: 'sidebarAnchor',
+    default: null,
+  });
