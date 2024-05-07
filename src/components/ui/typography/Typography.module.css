@@ -1,0 +1,126 @@
+@import url("../../../styles/color.css");
+/* @import url("../../../utils/fonts/fonts.css"); */
+
+/* 
+    Thin - 100
+    ExtraLight - 200
+    Light - 300
+    Regular - 400
+    Medium 500
+    SemiBold - 600
+    Bold - 700
+    ExtraBold - 800
+    Black - 900
+*/
+
+/*
+    h1 - 1.875rem - 
+    h2 - 1.5rem 
+    h3 - 1rem 
+    h4 - 0.875rem 
+    h5 - 0.75rem 
+*/
+.medium {
+    font-weight: 500;
+}
+.semiBold {
+    font-weight: 600;
+}
+.bold {
+    font-weight: 700;
+}
+.extraBold {
+    font-weight: 800;
+}
+.heavy {
+    font-weight: 900;
+}
+
+.h1 {
+    /* font-size: 1.875rem; */
+    font-size: 4.21875vh;
+}
+
+.h2 {
+    /* font-size: 1.5rem; */
+    font-size: 3.375vh;
+}
+
+.h3 {
+    /* font-size: 1.125rem; */
+    font-size: 2.53125vh;
+}
+
+.h4 {
+    /* font-size: 1rem; */
+    font-size: 2.25vh;
+}
+
+.h5 {
+    /* font-size: 0.875rem; */
+    font-size: 1.96875vh;
+}
+
+.h6 {
+    /* font-size: 0.75rem; */
+    font-size: 1.6875vh;
+}
+
+.h7 {
+    /* font-size: 0.625rem; */
+    font-size: 1.40625vh;
+}
+
+.p1 {
+    /* font-size: 1rem; */
+    font-size: 2.25vh;
+}
+
+.p2 {
+    /* font-size: 0.875rem; */
+    font-size: 1.96875vh;
+}
+
+.p3 {
+    /* font-size: 0.75rem; */
+    font-size: 1.6875vh;
+}
+
+.p4 {
+    /* font-size: 0.625rem; */
+    font-size: 1.40625vh;
+}
+
+.primary {
+    color: var(--blue-0);
+}
+
+.white {
+    color: var(--white-1);
+}
+
+.dark {
+    color: var(--black-0);
+}
+
+.secondary {
+    color: var(--grey-0);
+    /*dark gray */
+}
+
+.muted {
+    color: var(--black-6);
+    /*lightgray*/
+}
+
+.warning {
+    color: var(--warning-0);
+}
+
+.purple {
+    color: var(--purple-0);
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
