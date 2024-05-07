@@ -31,12 +31,12 @@ export const sidebarData: SidebarItem[] = [
         option: 'Tenants',
     },
     {
-        key: 'ufmProfile',
-        option: 'UFM Profiles',
-    },
-    {
         key: 'gitAccounts',
         option: 'Git Accounts',
+    },
+    {
+        key: 'ufmProfile',
+        option: 'UFM Profiles',
     },
     {
         key: 'users',

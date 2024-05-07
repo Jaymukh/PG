@@ -7,22 +7,20 @@ import { useNavigate } from 'react-router-dom';
 // import '../../../styles/main.css';
 
 // Components
-import { Heading, TypographyColor, TypographyType } from '../components/ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../components/ui/typography/Body';
-import { loggedUserState, sidebarAnchorState, spinnerState, visiblePanelState } from '../states';
+import { sidebarAnchorState, visiblePanelState } from '../states';
 
 // Utilities
-import * as Constants from '../utils/Constants';
 import { RouteConstants } from "../constants/routeConstants";
-import { MdOutlineMenu } from "react-icons/md";
 
-const SideBar = () => {
+interface SideBarProps {
+    sidebarData: any;
+}
+const SideBar = ({sidebarData}: SideBarProps) => {
     const navigate = useNavigate();
     const menuRef = useRef<HTMLDivElement | null>(null);
 	const [sidebarAnchor, setSidebarAnchor] = useRecoilState(sidebarAnchorState);
-    // const loggedUser = useRecoilValue(loggedUserState);
     const [visiblePanel, setVisiblePanel] = useRecoilState(visiblePanelState);
-    // const setSpinner = useSetRecoilState(spinnerState);
 
 
     const handleItemClick = (data: string) => {
@@ -53,7 +51,7 @@ const SideBar = () => {
         <div className="" >            
             {Boolean(sidebarAnchor) 
             && (<ul className='side-menu'>
-                {Constants.sidebarData.map((item) => (
+                {sidebarData.map((item: any) => (
                     <li
                         key={item.key}
                         className='side-menu-item d-flex fs-16'

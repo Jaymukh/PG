@@ -13,19 +13,22 @@ import SearchBar from './ui/search/SearchBar';
 // import '../styles/main.css';
 
 // Components
-interface TenantsProps {
+interface TableViewProps {
     setGridView: (gridView: boolean) => void;
+    tableName: string;
+    tableHeader: any;
+    tData: any;
 }
 
-const Tenants = ({ setGridView }: TenantsProps) => {
+const TableView = ({ setGridView, tableName, tableHeader, tData }: TableViewProps) => {
     const [buttonState, setButtonState] = useState<[number, boolean]>([0, false]);
-    const [tenants, setTenants] = useState(Constants.tenants)
+    const [tableData, setTableData] = useState(tData)
     // function for sorting
-    const handleSortTable = (item: Constants.TenantHeader, order: string, index: number) => {
+    const handleSortTable = (item: any, order: string, index: number) => {
         setButtonState([index, order === 'asc' ? true : false]);
-        let sortedTable = Constants.tenants.slice().sort((a: any, b: any) => {
+        let sortedTable = tableData.slice().sort((a: any, b: any) => {
             const actualKey = item.key + 'ActualValue';
-            const hasActualValue = Constants.tenants.some((obj: any) => obj.hasOwnProperty(actualKey));
+            const hasActualValue = tableData.some((obj: any) => obj.hasOwnProperty(actualKey));
             if (a[item.key] === null && b[item.key] === null) {
                 return 0;
             } else if (a[item.key] === null) {
@@ -46,7 +49,7 @@ const Tenants = ({ setGridView }: TenantsProps) => {
                 return 0;
             }
         });
-        setTenants([...sortedTable])
+        setTableData([...sortedTable])
     }
 
     return (
@@ -54,7 +57,7 @@ const Tenants = ({ setGridView }: TenantsProps) => {
             <div className="d-flex flex-row justify-content-between align-items-center" style={{ height: '10%', width: '97%' }}>
                 <div className="w-25">
                     <Heading
-                        title='Tenants'
+                        title={tableName}
                         type={TypographyType.h2}
                         color={TypographyColor.primary}
                         weight={TypographyWeight.semiBold}
@@ -80,7 +83,7 @@ const Tenants = ({ setGridView }: TenantsProps) => {
                     <table>
                         <thead>
                             <tr>
-                                {Constants.tenantHeader.map((item, index) => (
+                                {tableHeader.map((item: any, index: number) => (
                                     <th className='text-start'>
                                         <div className='d-flex flex-row align-items-center'>
                                             {/* <p className='padding-top-3 padding-right-2'>{item.value}</p> */}
@@ -110,7 +113,7 @@ const Tenants = ({ setGridView }: TenantsProps) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {tenants.map((row) => (
+                            {tableData.map((row: any) => (
                                 <tr
                                     key={row.id}>
                                     <td>{row.name}</td>
@@ -147,4 +150,4 @@ const Tenants = ({ setGridView }: TenantsProps) => {
     );
 };
 
-export default Tenants;
+export default TableView;

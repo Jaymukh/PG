@@ -13,11 +13,11 @@ import SearchBar from './ui/search/SearchBar';
 // import '../styles/main.css';
 
 // Components
-interface TenantsProps {
+interface GitAccountsProps {
     setGridView: (gridView: boolean) => void;
 }
 
-const Tenants = ({ setGridView }: TenantsProps) => {
+const GitAccounts = ({ setGridView }: GitAccountsProps) => {
     const [buttonState, setButtonState] = useState<[number, boolean]>([0, false]);
     const [tenants, setTenants] = useState(Constants.tenants)
     // function for sorting
@@ -54,7 +54,7 @@ const Tenants = ({ setGridView }: TenantsProps) => {
             <div className="d-flex flex-row justify-content-between align-items-center" style={{ height: '10%', width: '97%' }}>
                 <div className="w-25">
                     <Heading
-                        title='Tenants'
+                        title='Git Accounts'
                         type={TypographyType.h2}
                         color={TypographyColor.primary}
                         weight={TypographyWeight.semiBold}
@@ -147,4 +147,4 @@ const Tenants = ({ setGridView }: TenantsProps) => {
     );
 };
 
-export default Tenants;
+export default GitAccounts;
