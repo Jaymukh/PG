@@ -6,8 +6,7 @@ import React, { useEffect } from 'react';
 
 // Components
 import Header from '../components/Header';
-import Tenants from '../components/Tenants'
-import SideBar from '../components/SideBar';
+import SideBar from '../components/ui/SideBar';
 import UfmProfile from '../components/UfmProfile';
 import { useRecoilValue } from 'recoil';
 import { sidebarAnchorState } from '../states';

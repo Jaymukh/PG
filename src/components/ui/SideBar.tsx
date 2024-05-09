@@ -7,11 +7,11 @@ import { useNavigate } from 'react-router-dom';
 // import '../../../styles/main.css';
 
 // Components
-import Body, { BodyColor, BodyType } from '../components/ui/typography/Body';
-import { sidebarAnchorState, visiblePanelState } from '../states';
+import Body, { BodyColor, BodyType } from './typography/Body';
+import { sidebarAnchorState, visiblePanelState } from '../../states';
 
 // Utilities
-import { RouteConstants } from "../constants/routeConstants";
+import { RouteConstants } from "../../constants/routeConstants";
 
 interface SideBarProps {
     sidebarData: any;

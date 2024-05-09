@@ -18,7 +18,7 @@ import { RouteConstants } from '../constants/routeConstants';
 import AccountOptions from './AccountOptions';
 import Body, { BodyColor, BodyType } from './ui/typography/Body';
 import * as Constants from '../utils/Constants';
-import SideBar from './SideBar';
+import SideBar from './ui/SideBar';
 import { Heading, TypographyColor, TypographyType, TypographyWeight } from './ui/typography/Heading';
 
 
