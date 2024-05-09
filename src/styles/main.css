@@ -671,4 +671,12 @@ th {
     padding-right: 2.8125vh !important;
 }
 
-
+/* ufm profile */
+.input {
+    width: 21.5vw !important;
+    height: 2.5rem;
+    padding: 1rem;
+  }
+.width {
+    width: 21vw;
+}
