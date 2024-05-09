@@ -2,7 +2,7 @@ import React from 'react'
 import '../../../../../App.css';
 import { MdCancel } from 'react-icons/md';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from './ui/button/Button';
-import { Heading, TypographyColor, TypographyType } from './ui/typography/Heading';
+import { Heading, TypographyColor, TypographyType, TypographyWeight } from './ui/typography/Heading';
 
 interface ConfirmDeleteProps {
     showConfirmDeleteModal: boolean;
@@ -28,7 +28,8 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
                             <Heading
                                 title='Are you sure?'
                                 type={TypographyType.h5}
-                                colour={TypographyColor.dark}
+                                color={TypographyColor.dark}
+                                weight={TypographyWeight.medium}
                             />
                             <p className='text-center fontSizeS'>Do you really want to delete this record? This process cannot be undone.</p>
                             <Button

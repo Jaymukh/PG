@@ -64,7 +64,7 @@ input {
     justify-content: flex-start;
     align-items: center;
     margin: 0 1rem;
-    width: 50%;
+    width: auto;
 
   }
   

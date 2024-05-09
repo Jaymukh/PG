@@ -63,20 +63,22 @@ const AccountOptions = () => {
 	}, []);
 
 	useEffect(() => {
-		setLoggedUser({ ...loggedUser, initial: 'PG', name: 'Procter & Gamble' });		
+		setLoggedUser({ ...loggedUser, initial: 'PG', name: 'Procter & Gamble' });
 	}, []);
 
 	return (
 		<div className='account-menu' ref={menuRef}>
-			<div className='d-flex flex-row justify-content-center align-items-center' onClick={handleClick}>
-				<ButtonAvatar
-					image={Logo}
-					initial={loggedUser.initial}
-					bgColor='#0193D8'
-					classname='margin-right-1'
-				/>
-				<IoMdArrowDropdown className='margin-left-1 padding-left-right-0 fs-22' color='rgba(28, 27, 31, 1)' />
-			</div>
+			<li className="header-item">
+				<div className='d-flex flex-row justify-content-center align-items-center' onClick={handleClick}>
+					<ButtonAvatar
+						image={Logo}
+						initial={loggedUser.initial}
+						bgColor='#0193D8'
+						classname='margin-right-1'
+					/>
+					<IoMdArrowDropdown className='margin-left-1 padding-left-right-0 fs-22' color='rgba(28, 27, 31, 1)' />
+				</div>
+			</li>
 
 			{Boolean(anchorEl) &&
 				(<ul className='account-menu-dropdown '>

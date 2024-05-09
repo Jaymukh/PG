@@ -13,29 +13,18 @@ body {
 }
 
 /* accountoptions */
-
 .side-menu {
-    position: relative;
-}
-
-.side-menu-dropdown {
-    position: absolute;
-    top: -10px ;
-    left: 0;
     background-color: var(--blue-0);
-    z-index: 1000 !important;
     border-radius: 0.703125vh;
-    min-width: 16vw;
-    max-width: 100%;
+    width: 16vw;
     height: 100vh;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--light-grey-2);
-    /* padding: 2.8125vh 2.8125vh 0 2.8125vh !important; */
+    padding: 0;
 }
 
 .side-menu-item {
     margin: 2.8125vh 2vw;
-    /* width: 100%; */
     line-height: 4.21875vh;
     display: flex;
     align-items: center;
@@ -63,12 +52,8 @@ body {
     flex: row;
     justify-content: space-between;
     align-items: center;
-    /* border-bottom: 1px solid #dee2e6; */
     background-color: white;
-    width: 100vw;
-    padding-right: 0.5rem;
-    /* border-style: outset; */
-    /* box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);  */
+    width: 100%;
 }
 
 .header ul {
@@ -145,7 +130,7 @@ body {
 /* invite table starts here */
 .tenant-table-container {
     width: 97%;
-    height: 96%;
+    height: fit-content;
     max-height: 100%;
     overflow-x: auto;
     overflow-y: auto;
@@ -161,6 +146,7 @@ body {
 
 .tenant-table-container table {
     width: 100%;
+    height: 100%;
     border-collapse: separate;
     border: none;
     border-spacing: 0px !important;
@@ -209,6 +195,11 @@ th {
     background-color: var(--white-1);
 }
 /* invite table ends here */
+
+/* Drawer */
+.drawer-shadow {
+    box-shadow: 0px 3px 26px var(--black-16);
+}
 
 /* font size class  */
 .fs-9 {

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { AiOutlineClose } from "react-icons/ai";
+import '../../styles/main.css'
 import { Heading, TypographyColor, TypographyType, TypographyWeight } from '../ui/typography/Heading';
 import { Button, ButtonTheme, ButtonVariant } from './button/Button';
 
@@ -28,7 +29,7 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
     }, [handleClickOutside]);
     
     return (
-        <div className={`offcanvas offcanvas-end h-100 drawer-shadow border-0 overflow-auto ${isOpen ? 'show' : ''}`} id={id} ref ={drawerRef}>
+        <div className={`offcanvas offcanvas-end h-100 w-25 p-3  border-0 overflow-auto ${isOpen ? 'show' : ''}`} id={id} ref ={drawerRef}>
             <div>
                 <div className="d-flex flex-row justify-content-between align-items-center margin-0 padding-top-bottom-0">
                     <Heading

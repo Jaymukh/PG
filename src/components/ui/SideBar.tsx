@@ -7,23 +7,21 @@ import { useNavigate } from 'react-router-dom';
 // import '../../../styles/main.css';
 
 // Components
-import { Heading, TypographyColor, TypographyType } from '../components/ui/typography/Heading';
-import Body, { BodyColor, BodyType } from '../components/ui/typography/Body';
-import { loggedUserState, spinnerState, visiblePanelState } from '../states';
+import Body, { BodyColor, BodyType } from './typography/Body';
+import { sidebarAnchorState, visiblePanelState } from '../../states';
 
 // Utilities
-import * as Constants from '../utils/Constants';
-import { RouteConstants } from "../constants/routeConstants";
-import { MdOutlineMenu } from "react-icons/md";
+import { RouteConstants } from "../../constants/routeConstants";
 
-
-const SideBar = () => {
+interface SideBarProps {
+    sidebarData: any;
+}
+const SideBar = ({sidebarData}: SideBarProps) => {
     const navigate = useNavigate();
     const menuRef = useRef<HTMLDivElement | null>(null);
-	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-    // const loggedUser = useRecoilValue(loggedUserState);
+	const [sidebarAnchor, setSidebarAnchor] = useRecoilState(sidebarAnchorState);
     const [visiblePanel, setVisiblePanel] = useRecoilState(visiblePanelState);
-    // const setSpinner = useSetRecoilState(spinnerState);
+
 
     const handleItemClick = (data: string) => {
         setVisiblePanel('/' + data);
@@ -31,17 +29,13 @@ const SideBar = () => {
         handleClose();
     }
 
-    const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
-		Boolean(anchorEl) ? setAnchorEl(null) : setAnchorEl(event.currentTarget);
-	};
-
     const handleClose = () => {
-		setAnchorEl(null);
+		setSidebarAnchor(null);
 	};
 
     const handleClickOutside = (event: { target: any; }) => {
 		if (menuRef.current && !menuRef.current.contains(event.target)) {
-			handleClose();
+			setSidebarAnchor(null);
 		}
 	};
 
@@ -54,13 +48,10 @@ const SideBar = () => {
 
     return (
         // <div className='col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 padding-0 padding-right-3 h-100 bg-blue-0'>
-        <div className="side-menu" ref={menuRef}>
-            <li className='header-item' onClick={handleMenuClick}>
-                <MdOutlineMenu className='fs-43 color-blue-0' />
-            </li>
-            {Boolean(anchorEl) 
-            && (<ul className="side-menu-dropdown">
-                {Constants.sidebarData.map((item) => (
+        <div className="" >            
+            {Boolean(sidebarAnchor) 
+            && (<ul className='side-menu'>
+                {sidebarData.map((item: any) => (
                     <li
                         key={item.key}
                         className='side-menu-item d-flex fs-16'
