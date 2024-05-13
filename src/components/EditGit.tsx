@@ -7,24 +7,24 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import '../styles/main.css';
 
 // Components
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../components/ui/button/Button';
-import { Heading, TypographyColor, TypographyType, TypographyWeight } from '../components/ui/typography/Heading';
-import Body, { BodyColor, BodyType } from '../components/ui/typography/Body';
-import Select, { SelectSize } from '../components/ui/select/Select';
-import { Input } from '../components/ui/input/Input';
-import Drawer from '../components/ui/Drawer';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from './ui/button/Button';
+import { Heading, TypographyColor, TypographyType, TypographyWeight } from './ui/typography/Heading';
+import Body, { BodyColor, BodyType } from './ui/typography/Body';
+import Select, { SelectSize } from './ui/select/Select';
+import { Input } from './ui/input/Input';
+import Drawer from './ui/Drawer';
 import * as Constants from '../utils/Constants';
 import { errorState } from '../states';
 
 // Utilities
 
-interface EditTenantsProps {
+interface EditGitProps {
     selectedData: any;
     handleCloseDialog: () => void;
     handleUpdate: (updatedRow: any) => void;
 }
 
-const EditTenants: React.FC<EditTenantsProps> = ({
+const EditGit: React.FC<EditGitProps> = ({
     selectedData,
     handleCloseDialog,
     handleUpdate
@@ -39,7 +39,7 @@ const EditTenants: React.FC<EditTenantsProps> = ({
         setUpdatedData({ ...updatedData, [name]: value });
     }
     const handleUpdateClick = () => {
-        if (updatedData.Name && updatedData['Host Url'] && updatedData.User && updatedData.Password && updatedData.Environment && updatedData.State) {
+        if (updatedData.Name && updatedData.Environment && updatedData['Host Url'] && updatedData['API Token'] && updatedData['Client Secret'] && updatedData['Client ID'] && updatedData.State) {
             handleUpdate(updatedData);
         }
         else {
@@ -82,22 +82,22 @@ const EditTenants: React.FC<EditTenantsProps> = ({
                         value={updatedData.Description}
                         name='Description'
                         onChange={(e) => handleChangeData(e)}
-                    />
+                    />                    
                     <Heading
-                        title='Region'
+                        title='Environment*'
                         type={TypographyType.h5}
                         color={TypographyColor.dark}
                         weight={TypographyWeight.medium}
                         classname='margin-top-2 margin-bottom-1'
                     />
                     <Select
-                        options={Constants?.regions}
+                        options={Constants?.environments}
                         onChange={(e) => handleChangeData(e)}
-                        value={updatedData?.Region}
+                        value={updatedData?.Environment}
                         labelKey='key'
                         valueKey='key'
                         size={SelectSize.large}
-                        name='Region'
+                        name='Environment'
                         classname='padding-left-right-3'
                     />
                     <Heading
@@ -115,49 +115,63 @@ const EditTenants: React.FC<EditTenantsProps> = ({
                         onChange={(e) => handleChangeData(e)}
                     />
                     <Heading
-                        title='User*'
-                        type={TypographyType.h5}
-                        color={TypographyColor.dark}
-                        weight={TypographyWeight.medium}
-                        classname='margin-top-2 margin-bottom-1'
-                    />
-                    <Input
-                        type="text"
-                        placeholder="Enter user"
-                        value={updatedData?.User}
-                        name='User'
-                        onChange={(e) => handleChangeData(e)}
-                    />
-                    <Heading
-                        title='Password*'
-                        type={TypographyType.h5}
-                        color={TypographyColor.dark}
-                        weight={TypographyWeight.medium}
-                        classname='margin-top-2 margin-bottom-1'
-                    />
-                    <Input
-                        type="text"
-                        placeholder="Enter password"
-                        value={updatedData?.Password}
-                        name='Password'
-                        onChange={(e) => handleChangeData(e)}
-                    />
-                    <Heading
-                        title='Environment*'
+                        title='Auth Method'
                         type={TypographyType.h5}
                         color={TypographyColor.dark}
                         weight={TypographyWeight.medium}
                         classname='margin-top-2 margin-bottom-1'
                     />
                     <Select
-                        options={Constants?.environments}
+                        options={Constants?.authMethods}
                         onChange={(e) => handleChangeData(e)}
-                        value={updatedData?.Environment}
+                        value={updatedData['Auth Method']}
                         labelKey='key'
                         valueKey='key'
                         size={SelectSize.large}
-                        name='Environment'
+                        name='Auth Method'
                         classname='padding-left-right-3'
+                    />
+                    <Heading
+                        title='API Token*'
+                        type={TypographyType.h5}
+                        color={TypographyColor.dark}
+                        weight={TypographyWeight.medium}
+                        classname='margin-top-2 margin-bottom-1'
+                    />
+                    <Input
+                        type="password"
+                        placeholder="Enter api token"
+                        value={updatedData['API Token']}
+                        name='API Token'
+                        onChange={(e) => handleChangeData(e)}
+                    />
+                    <Heading
+                        title='Client Secret*'
+                        type={TypographyType.h5}
+                        color={TypographyColor.dark}
+                        weight={TypographyWeight.medium}
+                        classname='margin-top-2 margin-bottom-1'
+                    />
+                    <Input
+                        type="text"
+                        placeholder="Enter client secret"
+                        value={updatedData['Client Secret']}
+                        name='Client Secret'
+                        onChange={(e) => handleChangeData(e)}
+                    />
+                    <Heading
+                        title='Client ID*'
+                        type={TypographyType.h5}
+                        color={TypographyColor.dark}
+                        weight={TypographyWeight.medium}
+                        classname='margin-top-2 margin-bottom-1'
+                    />
+                    <Input
+                        type="text"
+                        placeholder="Enter client id"
+                        value={updatedData['Client ID']}
+                        name='Client ID'
+                        onChange={(e) => handleChangeData(e)}
                     />
                     <Heading
                         title='State*'
@@ -191,5 +205,5 @@ const EditTenants: React.FC<EditTenantsProps> = ({
     );
 };
 
-export default EditTenants;
+export default EditGit;
 

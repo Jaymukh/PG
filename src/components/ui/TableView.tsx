@@ -90,31 +90,35 @@ const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, han
                     <table>
                         <thead>
                             <tr>
-                                {Object.keys(tableData[0]).map((key, index) => (
-                                    <th className='text-start' key={index}>
-                                        <div className='d-flex flex-row align-items-center'>
-                                            <Heading
-                                                title={key}
-                                                type={TypographyType.h4}
-                                                color={TypographyColor.primary}
-                                                weight={TypographyWeight.semiBold}
-                                                classname='padding-right-2'
-                                            />
-                                            <div className='d-flex flex-column'>
-                                                <BiSolidUpArrow name='desc' className="fs-9" color={`${(buttonState[0] === index) && !buttonState[1] ? '#003da5' : '#939393'}`} onClick={() => handleSortTable(key, 'desc', index)} />
-                                                <BiSolidDownArrow name='asc' className="fs-9" color={`${(buttonState[0] === index) && buttonState[1] ? '#003da5' : '#939393'}`} onClick={() => handleSortTable(key, 'asc', index)} />
+                                {Object.keys(tableData[0])
+                                    .filter(key => key !== 'User' && key !== 'Password' && key !== 'Description' && key !== 'Region' && key !== 'Auth Method' && key !== 'API Token' && key !== 'Client Secret' && key !== 'Client ID')
+                                    .map((key, index) => (
+                                        <th className='text-start' key={index}>
+                                            <div className='d-flex flex-row align-items-center'>
+                                                <Heading
+                                                    title={key}
+                                                    type={TypographyType.h4}
+                                                    color={TypographyColor.primary}
+                                                    weight={TypographyWeight.semiBold}
+                                                    classname='padding-right-2'
+                                                />
+                                                <div className='d-flex flex-column'>
+                                                    <BiSolidUpArrow name='desc' className="fs-9" color={`${(buttonState[0] === index) && !buttonState[1] ? '#003da5' : '#939393'}`} onClick={() => handleSortTable(key, 'desc', index)} />
+                                                    <BiSolidDownArrow name='asc' className="fs-9" color={`${(buttonState[0] === index) && buttonState[1] ? '#003da5' : '#939393'}`} onClick={() => handleSortTable(key, 'asc', index)} />
+                                                </div>
                                             </div>
-                                        </div>
+                                        </th>
+                                    ))}
+                                {tableName != 'Users'
+                                    && <th className='text-center'>
+                                        <Heading
+                                            title='Action'
+                                            type={TypographyType.h4}
+                                            color={TypographyColor.primary}
+                                            weight={TypographyWeight.semiBold}
+                                        />
                                     </th>
-                                ))}
-                                <th className='text-center'>
-                                    <Heading
-                                        title='Action'
-                                        type={TypographyType.h4}
-                                        color={TypographyColor.primary}
-                                        weight={TypographyWeight.semiBold}
-                                    />
-                                </th>
+                                }
                             </tr>
                         </thead>
                         <tbody>
@@ -123,47 +127,14 @@ const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, han
                                     <tr
                                         key={row['Id']}>
                                         {Object.keys(row)
+                                            .filter(key => key !== 'User' && key !== 'Password' && key !== 'Description' && key !== 'Region' && key !== 'Auth Method' && key !== 'API Token' && key !== 'Client Secret' && key !== 'Client ID')
                                             .map((key, i) => (
                                                 <td>
                                                     {typeof row[key as keyof typeof row] === 'boolean' ? (row[key as keyof typeof row] ? 'true' : 'false') : row[key as keyof typeof row]}
                                                 </td>
                                             ))}
-                                        <td className='text-center' style={{ whiteSpace: 'nowrap' }}>
-                                            <Button
-                                                theme={ButtonTheme.muted}
-                                                size={ButtonSize.default}
-                                                variant={ButtonVariant.transparent}
-                                                onClick={() => handleEditClick(row)}
-                                            >
-                                                <MdModeEdit className="fs-20" />
-                                            </Button>
-                                            <Button
-                                                theme={ButtonTheme.warning}
-                                                size={ButtonSize.default}
-                                                variant={ButtonVariant.transparent}
-                                                onClick={() => handleDelete(row['Id'])}
-                                            >
-                                                <MdDeleteSweep className="fs-20" />
-                                            </Button>
-                                        </td>
-                                    </tr>
-                                )))
-                                : ((searchTerm && (suggestions.length === 0))
-                                    ? (<tr>
-                                        <td colSpan={12} className='text-center fs-14'>
-                                            No matches found!
-                                        </td>
-                                    </tr>)
-                                    : (tableData.map((row: any) => (
-                                        <tr
-                                            key={row['Id']}>
-                                            {Object.keys(row)
-                                                .map((key, i) => (
-                                                    <td>
-                                                        {typeof row[key as keyof typeof row] === 'boolean' ? (row[key as keyof typeof row] ? 'true' : 'false') : row[key as keyof typeof row]}
-                                                    </td>
-                                                ))}
-                                            <td className='text-center' style={{ whiteSpace: 'nowrap' }}>
+                                        {tableName != 'Users'
+                                            && <td className='text-center' style={{ whiteSpace: 'nowrap' }}>
                                                 <Button
                                                     theme={ButtonTheme.muted}
                                                     size={ButtonSize.default}
@@ -181,6 +152,45 @@ const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, han
                                                     <MdDeleteSweep className="fs-20" />
                                                 </Button>
                                             </td>
+                                        }
+                                    </tr>
+                                )))
+                                : ((searchTerm && (suggestions.length === 0))
+                                    ? (<tr>
+                                        <td colSpan={12} className='text-center fs-14'>
+                                            No matches found!
+                                        </td>
+                                    </tr>)
+                                    : (tableData.map((row: any) => (
+                                        <tr
+                                            key={row['Id']}>
+                                            {Object.keys(row)
+                                                .filter(key => key !== 'User' && key !== 'Password' && key !== 'Description' && key !== 'Region' && key !== 'Auth Method' && key !== 'API Token' && key !== 'Client Secret' && key !== 'Client ID')
+                                                .map((key, i) => (
+                                                    <td>
+                                                        {typeof row[key as keyof typeof row] === 'boolean' ? (row[key as keyof typeof row] ? 'true' : 'false') : row[key as keyof typeof row]}
+                                                    </td>
+                                                ))}
+                                            {tableName != 'Users'
+                                                && <td className='text-center' style={{ whiteSpace: 'nowrap' }}>
+                                                    <Button
+                                                        theme={ButtonTheme.muted}
+                                                        size={ButtonSize.default}
+                                                        variant={ButtonVariant.transparent}
+                                                        onClick={() => handleEditClick(row)}
+                                                    >
+                                                        <MdModeEdit className="fs-20" />
+                                                    </Button>
+                                                    <Button
+                                                        theme={ButtonTheme.warning}
+                                                        size={ButtonSize.default}
+                                                        variant={ButtonVariant.transparent}
+                                                        onClick={() => handleDelete(row['Id'])}
+                                                    >
+                                                        <MdDeleteSweep className="fs-20" />
+                                                    </Button>
+                                                </td>
+                                            }
                                         </tr>
                                     ))
                                     )

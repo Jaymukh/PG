@@ -24,7 +24,7 @@ body {
 }
 
 .side-menu-item {
-    margin: 2.8125vh 2vw;
+    padding: 2.8125vh 2vw;
     line-height: 4.21875vh;
     display: flex;
     align-items: center;

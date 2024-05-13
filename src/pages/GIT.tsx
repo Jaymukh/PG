@@ -11,11 +11,14 @@ import SideBar from '../components/ui/SideBar';
 import { sidebarAnchorState } from '../states';
 import * as Constants from '../utils/Constants';
 import TableView from '../components/ui/TableView';
-import GridView from '../components/GridView';
+import GridView from '../components/ui/GridView';
+import EditTenants from '../components/EditTenants';
+import EditGit from '../components/EditGit';
 
 const GIT = () => {
     const sidebarAnchor = useRecoilValue(sidebarAnchorState);
     const [gridView, setGridView] = useState(false);
+
     const [selectedData, setSelectedData] = useState<Constants.GitAccount | null>(null);
 	const [gitAccounts, setGitAccounts] = useState(Constants.gitAccounts);
 	const handleEditClick = (row: Constants.GitAccount) => {
@@ -93,6 +96,8 @@ const GIT = () => {
 						<GridView setGridView={setGridView} gridName='Git Accounts' tData={gitAccounts} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} />
 						: <TableView setGridView={setGridView} tableName='Git Accounts' tData={gitAccounts} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} />						
 				}
+                {selectedData &&
+				<EditGit selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}
             </div>
 
         </div>

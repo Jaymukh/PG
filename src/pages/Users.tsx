@@ -11,7 +11,7 @@ import { useRecoilValue } from 'recoil';
 import { sidebarAnchorState } from '../states';
 import * as Constants from '../utils/Constants';
 import TableView from '../components/ui/TableView';
-import GridView from '../components/GridView';
+import GridView from '../components/ui/GridView';
 
 const Users = () => {
 	const sidebarAnchor = useRecoilValue(sidebarAnchorState);

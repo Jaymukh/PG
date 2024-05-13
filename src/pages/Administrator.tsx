@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil';
 // Components
 import Header from '../components/Header';
 import SideBar from '../components/ui/SideBar';
-import GridView from '../components/GridView';
+import GridView from '../components/ui/GridView';
 import { sidebarAnchorState } from '../states';
 import * as Constants from '../utils/Constants';
 import TableView from '../components/ui/TableView';
@@ -20,6 +20,7 @@ const Administrator = () => {
 	const [selectedData, setSelectedData] = useState<Constants.Tenant | null>(null);
 	const [tenants, setTenants] = useState(Constants.tenants);
 	const handleEditClick = (row: Constants.Tenant) => {
+		console.log(row);
 		setSelectedData(row);
 	};
 	const handleCloseDialog = () => {
