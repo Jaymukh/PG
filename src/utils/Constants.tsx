@@ -100,140 +100,201 @@ export const tenantHeader: TenantHeader[] = [
 
 ];
 export interface Tenant {
-    'Name': string;
     'Id': string;
+    'Name': string;
     'Environment': string;
     'Host Url': string;
     'State': string;
     'Created By': string;
     'Created On': string;
+    'User': string;
+    'Password': string;
+    'Description': string;
+    'Region': string;
 }
 export const tenants: Tenant[] = [
     {
-        'Name': 'tenant1',
         'Id': '1',
-        'Environment': 'tenant1',
+        'Name': 'tenant1',
+        'Environment': 'Environment2',
         'Host Url': 'tenant1.com',
-        'State': 'tenant1state',
+        'State': 'Disabled',
+        'Description': 'description',
+        'Region': 'region1',
         'Created By': 'Jay',
-        'Created On': '2024-03-05'
+        'Created On': '2024-03-05',
+        'User': 'S012345',
+        'Password': 'string'
+
     },
     {
-        'Name': 'tenant2',
         'Id': '2',
-        'Environment': 'tenant2',
+        'Name': 'tenant2',
+        'Environment': 'Environment2',
         'Host Url': 'tenant2.com',
-        'State': 'tenant2state',
+        'State': 'Disabled',
+        'Description': 'description',
+        'Region': 'region1',
         'Created By': 'ILMA',
-        'Created On': '2024-04-05'
+        'Created On': '2024-04-05',
+        'User': 'S012345',
+        'Password': 'string',
     },
     {
-        'Name': 'tenant3',
         'Id': '3',
-        'Environment': 'tenant3',
+        'Name': 'tenant3',
+        'Environment': 'Environment2',
         'Host Url': 'tenant3.com',
-        'State': 'tenant3state',
+        'State': 'Disabled',
+        'Description': 'description',
+        'Region': 'region1',
         'Created By': 'Dayana',
-        'Created On': '2024-03-04'
+        'Created On': '2024-03-04',
+        'User': 'S012345',
+        'Password': 'string',
     },
     {
-        'Name': 'tenant4',
         'Id': '4',
-        'Environment': 'tenant4',
+        'Name': 'tenant4',
+        'Environment': 'Environment2',
         'Host Url': 'tenant4.com',
-        'State': 'tenant4state',
+        'State': 'Disabled',
+        'Description': 'description',
+        'Region': 'region1',
         'Created By': 'Sudha',
-        'Created On': '2023-03-05'
+        'Created On': '2023-03-05',
+        'User': 'S012345',
+        'Password': 'string',
     },
     {
-        'Name': 'tenant1',
         'Id': '5',
-        'Environment': 'tenant1',
-        'Host Url': 'tenant1.com',
-        'State': 'tenant1state',
-        'Created By': 'Isai',
-        'Created On': '2020-03-05'
-    },
-    {
-        'Name': 'tenant2',
-        'Id': '6',
-        'Environment': 'tenant2',
-        'Host Url': 'tenant2.com',
-        'State': 'tenant2state',
-        'Created By': 'Ankur',
-        'Created On': '2024-03-11'
-    },
-    {
-        'Name': 'tenant3',
-        'Id': '7',
-        'Environment': 'tenant3',
-        'Host Url': 'tenant3.com',
-        'State': 'tenant3state',
-        'Created By': 'ILMA',
-        'Created On': '2024-03-05'
-    },
-    {
-        'Name': 'tenant4',
-        'Id': '8',
-        'Environment': 'tenant4',
-        'Host Url': 'tenant4.com',
-        'State': 'tenant4state',
-        'Created By': 'Jay',
-        'Created On': '2024-03-05'
-    },
-    {
-        'Name': 'tenant2',
-        'Id': '9',
-        'Environment': 'tenant2',
-        'Host Url': 'tenant2.com',
-        'State': 'tenant2state',
-        'Created By': 'ILMA',
-        'Created On': '2024-03-05'
-    },
-    {
-        'Name': 'tenant3',
-        'Id': '10',
-        'Environment': 'tenant3',
-        'Host Url': 'tenant3.com',
-        'State': 'tenant3state',
-        'Created By': 'ILMA',
-        'Created On': '2024-03-05'
-    },
-    {
-        'Name': 'tenant4',
-        'Id': '11',
-        'Environment': 'tenant4',
-        'Host Url': 'tenant4.com',
-        'State': 'tenant4state',
-        'Created By': 'ILMA',
-        'Created On': '2024-03-05'
-    },
-    {
         'Name': 'tenant1',
-        'Id': '12',
-        'Environment': 'tenant1',
+        'Environment': 'Environment2',
         'Host Url': 'tenant1.com',
-        'State': 'tenant1state',
-        'Created By': 'Jay',
-        'Created On': '2024-03-05'
+        'State': 'Disabled',
+        'Description': 'description',
+        'Region': 'region1',
+        'Created By': 'Isai',
+        'Created On': '2020-03-05',
+        'User': 'S012345',
+        'Password': 'string',
     },
     {
+        'Id': '6',
         'Name': 'tenant2',
-        'Id': '13',
-        'Environment': 'tenant2',
+        'Environment': 'Environment2',
         'Host Url': 'tenant2.com',
-        'State': 'tenant2state',
-        'Created By': 'ILMA',
-        'Created On': '2024-04-05'
+        'State': 'Draft',
+        'Description': 'description',
+        'Region': 'region1',
+        'Created By': 'Ankur',
+        'Created On': '2024-03-11',
+        'User': 'S012345',
+        'Password': 'string',
     },
     {
+        'Id': '7',
         'Name': 'tenant3',
-        'Id': '14',
-        'Environment': 'tenant3',
+        'Environment': 'Environment2',
         'Host Url': 'tenant3.com',
-        'State': 'tenant3state',
+        'State': 'Disabled',
+        'Description': 'description',
+        'Region': 'region1',
+        'Created By': 'ILMA',
+        'Created On': '2024-03-05',
+        'User': 'S012345',
+        'Password': 'string',
+    },
+    {
+        'Id': '8',
+        'Name': 'tenant4',
+        'Environment': 'Environment2',
+        'Host Url': 'tenant4.com',
+        'State': 'Draft',
+        'Description': 'description',
+        'Region': 'region1',
+        'Created By': 'Jay',
+        'Created On': '2024-03-05',
+        'User': 'S012345',
+        'Password': 'string',
+    },
+    {
+        'Id': '9',
+        'Name': 'tenant2',
+        'Environment': 'teEnvironment2nant2',
+        'Host Url': 'tenant2.com',
+        'State': 'Active',
+        'Description': 'description',
+        'Region': 'region1',
+        'Created By': 'ILMA',
+        'Created On': '2024-03-05',
+        'User': 'S012345',
+        'Password': 'string',
+    },
+    {
+        'Id': '10',
+        'Name': 'tenant3',
+        'Environment': 'Environment1',
+        'Host Url': 'tenant3.com',
+        'State': 'Active',
+        'Description': 'description',
+        'Region': 'region1',
+        'Created By': 'ILMA',
+        'Created On': '2024-03-05',
+        'User': 'S012345',
+        'Password': 'string',
+    },
+    {
+        'Id': '11',
+        'Name': 'tenant4',
+        'Environment': 'Environment1',
+        'Host Url': 'tenant4.com',
+        'State': 'Draft',
+        'Description': 'description',
+        'Region': 'region1',
+        'Created By': 'ILMA',
+        'Created On': '2024-03-05',
+        'User': 'S012345',
+        'Password': 'string',
+    },
+    {
+        'Id': '12',
+        'Name': 'tenant1',
+        'Environment': 'Environment1',
+        'Host Url': 'tenant1.com',
+        'State': 'Draft',
+        'Description': 'description',
+        'Region': 'region1',
+        'Created By': 'Jay',
+        'Created On': '2024-03-05',
+        'User': 'S012345',
+        'Password': 'string',
+    },
+    {
+        'Id': '13',
+        'Name': 'tenant2',
+        'Environment': 'Environment2',
+        'Host Url': 'tenant2.com',
+        'State': 'Active',
+        'Description': 'description',
+        'Region': 'region1',
+        'Created By': 'ILMA',
+        'Created On': '2024-04-05',
+        'User': 'S012345',
+        'Password': 'string',
+    },
+    {
+        'Id': '14',
+        'Name': 'tenant3',
+        'Environment': 'Environment2',
+        'Host Url': 'tenant3.com',
+        'State': 'Active',
+        'Description': 'description',
+        'Region': 'region1',
         'Created By': 'Dayana',
-        'Created On': '2024-03-04'
+        'Created On': '2024-03-04',
+        'User': 'S012345',
+        'Password': 'string',
     },
 ]
 
@@ -463,40 +524,60 @@ export interface GitAccount {
     'Environment': string;
     'Description': string;
     'Host Url': string;
+    'Auth Method': string;
+    'API Token': string;
+    'Client Secret': string;
+    'Client ID': string;
     'State': string;
 }
 export const gitAccounts: GitAccount[] = [
     {
         'Id': '1',
         'Name': 'git1',
-        'Environment': 'environment1',
+        'Environment': 'Environment1',
         'Description': 'description1',
         'Host Url': 'environment1.com',
-        'State': 'environment1state',
+        'Auth Method': 'OAuth',
+        'API Token': 'hjsdg5623ghsd7623tg',
+        'Client Secret': 'jmbfhjsdhmfkj765372yg37432g4bj',
+        'Client ID': 'jhsdutwug37eyg2u3y',
+        'State': 'Active',
     },
     {
         'Id': '2',
         'Name': 'git2',
-        'Environment': 'environment1',
+        'Environment': 'Environment2',
         'Description': 'description1',
         'Host Url': 'environment1.com',
-        'State': 'environment1state',
+        'Auth Method': 'OAuth',
+        'API Token': 'hjsdg5623ghsd7623tg',
+        'Client Secret': 'jmbfhjsdhmfkj765372yg37432g4bj',
+        'Client ID': 'jhsdutwug37eyg2u3y',
+        'State': 'Draft',
     },
     {
         'Id': '3',
         'Name': 'git1',
-        'Environment': 'environment1',
+        'Environment': 'Environment2',
         'Description': 'description1',
         'Host Url': 'environment1.com',
-        'State': 'environment1state',
+        'Auth Method': 'OAuth',
+        'API Token': 'hjsdg5623ghsd7623tg',
+        'Client Secret': 'jmbfhjsdhmfkj765372yg37432g4bj',
+        'Client ID': 'jhsdutwug37eyg2u3y',
+        'State': 'Draft',
     },
     {
         'Id': '4',
         'Name': 'git1',
-        'Environment': 'environment1',
+        'Environment': 'Environment2',
         'Description': 'description1',
         'Host Url': 'environment1.com',
-        'State': 'environment1state',
+        'Auth Method': 'OAuth',
+        'API Token': 'hjsdg5623ghsd7623tg',
+        'Client Secret': 'jmbfhjsdhmfkj765372yg37432g4bj',
+        'Client ID': 'jhsdutwug37eyg2u3y',
+        'State': 'Draft',
     },
 ]
 
@@ -555,5 +636,81 @@ export const users: User[] = [
         'Is Admin': true,
         'First Logged on': '2022-05-06',
         'Last Logged on': '2024-05-06'
+    },
+]
+
+
+export const regions: TenantHeader[] = [
+    {
+        key: 'Region1',
+        value: 'Region1'
+    },
+    {
+        key: 'Region2',
+        value: 'Region2'
+    },
+]
+export const environments: TenantHeader[] = [
+    {
+        key: 'Environment1',
+        value: 'Environment1'
+    },
+    {
+        key: 'Environment2',
+        value: 'Environment2'
+    },
+]
+export const states: TenantHeader[] = [
+    {
+        key: 'Disabled',
+        value: 'Disabled'
+    },
+    {
+        key: 'Active',
+        value: 'Active'
+    },
+    {
+        key: 'Draft',
+        value: 'Draft'
+    },
+]
+export const git: TenantHeader[] = [
+    {
+        key: 'Git1',
+        value: 'Git1'
+    },
+    {
+        key: 'Git2',
+        value: 'Git2'
+    },
+]
+export const primarySite: TenantHeader[] = [
+    {
+        key: 'Site1',
+        value: 'Site1'
+    },
+    {
+        key: 'Site2',
+        value: 'Site2'
+    },
+]
+export const secondarySite: TenantHeader[] = [
+    {
+        key: 'Site1',
+        value: 'Site1'
+    },
+    {
+        key: 'Site2',
+        value: 'Site2'
+    },
+]
+export const authMethods: TenantHeader[] = [
+    {
+        key: 'Personal Token',
+        value: 'Personal Token'
+    },
+    {
+        key: 'Oauth2',
+        value: 'Oauth2'
     },
 ]

@@ -1,82 +1,74 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { AiOutlineInfoCircle } from 'react-icons/ai';
+import React, { useState, useRef } from 'react';
 import '../../styles/main.css';
 
 interface InfoPanelProps {
+    Icon: React.ElementType;
     text: string;
     classname?: string;
+    onClick?: (event: any) => void;
 }
-const InfoPanel: React.FC<InfoPanelProps> = ({ text, classname }) => {
+
+const InfoPanel: React.FC<InfoPanelProps> = ({ Icon, text, classname, onClick }) => {
     const menuRef = useRef<HTMLDivElement | null>(null);
     const [showPopup, setShowPopup] = useState(false);
     const [popupStyle, setPopupStyle] = useState<{ left: number | string; right: number | string; width: any; transform?: string; }>({ left: '', right: '', width: 192 });
 
-    const handlePopup = () => {
-        const popupWidth = 192;
+    const handleMouseEnter = () => {
+        const popupMaxWidth = 192; // Maximum width
         const infoButtonPosition = menuRef.current?.getBoundingClientRect();
-
+    
         if (infoButtonPosition) {
+            // Calculate the width based on the content
+            const popupWidth = Math.min(infoButtonPosition.width, popupMaxWidth);
+    
             const hasSpaceOnLeft = infoButtonPosition.left >= popupWidth / 2;
             const hasSpaceOnRight = window.innerWidth - infoButtonPosition.right >= popupWidth / 2;
-
+    
+            let popupStyle: { left: number | string; right: number | string; width: string; transform?: string; } = { left: '', right: '', width: 'fit-content' };
+    
             if (hasSpaceOnLeft && hasSpaceOnRight) {
                 // Enough space on both sides, center the popup
-                setPopupStyle({ left: '50%', right: 'auto', width: popupWidth, transform: 'translateX(-50%)' });
+                popupStyle = { ...popupStyle, left: '50%', right: 'auto', transform: 'translateX(-50%)' };
             } else if (hasSpaceOnLeft) {
                 // Not enough space on the right, position on the left
                 const rightPosition = -(window.innerWidth - infoButtonPosition.right + window.scrollX - 10);
-                setPopupStyle({ left: 'auto', right: rightPosition, width: popupWidth, transform: 'none' });
+                popupStyle = { ...popupStyle, left: 'auto', right: rightPosition };
             } else if (hasSpaceOnRight) {
                 // Not enough space on the left, position on the right
                 const lefttPosition = - (infoButtonPosition.left + window.scrollX - 10);
-                setPopupStyle({ left: lefttPosition, right: 'auto', width: popupWidth, transform: 'none' });
+                popupStyle = { ...popupStyle, left: lefttPosition };
             }
+    
+            // Set the maximum width
+            popupStyle.width = `max-content`;
+    
+            setPopupStyle(popupStyle);
         }
         setShowPopup(true);
-    }
+    };
+    
 
-
-    const handleClickOutside = (event: { target: any; }) => {
-        if (menuRef.current && !menuRef.current.contains(event.target)) {
-            setShowPopup(false);
-        }
+    const handleMouseLeave = () => {
+        setShowPopup(false);
     };
 
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-    
     return (
         <div className="info-container" ref={menuRef}>
             <div
                 className="cursor-pointer infoIcon"
-                onClick={() => handlePopup()}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onClick={onClick} 
             >
-                <AiOutlineInfoCircle className={`icon-color-5 margin-left-1 fs-20 ${classname}`} />
+                <Icon className={`margin-left-1 fs-20 ${classname}`} />
             </div>
             {showPopup && (
                 <div className='popup' style={{ ...popupStyle }}>
                     <p className='margin-0 text-start info-text-wrap' dangerouslySetInnerHTML={{ __html: text }} />
-                    {/* {showMore
-                        &&
-                        <Button
-                            theme={ButtonTheme.primary}
-                            size={ButtonSize.xsmall}
-                            variant={ButtonVariant.transparent}
-                            onClick={() => handleReadMore()}
-                            classname='margin-0 h-auto padding-0'
-                        >
-                            Read More
-                        </Button>
-                    } */}
                 </div>
             )}
         </div>
-    )
-}
+    );
+};
 
-export default InfoPanel
+export default InfoPanel;

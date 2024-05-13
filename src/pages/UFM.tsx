@@ -11,7 +11,7 @@ import Header from '../components/Header';
 import SideBar from '../components/ui/SideBar';
 import { sidebarAnchorState } from '../states';
 import TableView from '../components/ui/TableView';
-import GridView from '../components/GridView';
+import GridView from '../components/ui/GridView';
 import EditUFMProfile from '../components/EditUFMProfile';
 import ConfirmDelete from '../components/ConfirmDelete';
 import UFMProfileNew from '../components/UFMProfileNew';

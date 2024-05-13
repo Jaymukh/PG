@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil';
 // Components
 import Header from '../components/Header';
 import SideBar from '../components/ui/SideBar';
-import GridView from '../components/GridView';
+import GridView from '../components/ui/GridView';
 import { sidebarAnchorState } from '../states';
 import * as Constants from '../utils/Constants';
 import TableView from '../components/ui/TableView';
@@ -24,6 +24,7 @@ const Administrator = () => {
 	const [openCheckConnection, setOpenCheckConnection] = useState(false);
 	const [checkConnectionColor, setcheckConnectionColor] = useState(false);
 	const handleEditClick = (row: Constants.Tenant) => {
+		console.log(row);
 		setSelectedData(row);
 	};
 	const handleCloseDialog = () => {

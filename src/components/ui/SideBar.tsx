@@ -1,10 +1,10 @@
 // External libraries
-import React, { useState, useEffect, useRef } from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useEffect, useRef } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { useNavigate } from 'react-router-dom';
 
 // CSS
-// import '../../../styles/main.css';
+import '../../styles/main.css';
 
 // Components
 import Body, { BodyColor, BodyType } from './typography/Body';
@@ -20,7 +20,7 @@ const SideBar = ({sidebarData}: SideBarProps) => {
     const navigate = useNavigate();
     const menuRef = useRef<HTMLDivElement | null>(null);
 	const [sidebarAnchor, setSidebarAnchor] = useRecoilState(sidebarAnchorState);
-    const [visiblePanel, setVisiblePanel] = useRecoilState(visiblePanelState);
+    const setVisiblePanel = useSetRecoilState(visiblePanelState);
 
 
     const handleItemClick = (data: string) => {
@@ -47,7 +47,6 @@ const SideBar = ({sidebarData}: SideBarProps) => {
 	}, []);
 
     return (
-        // <div className='col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 padding-0 padding-right-3 h-100 bg-blue-0'>
         <div className="" >            
             {Boolean(sidebarAnchor) 
             && (<ul className='side-menu'>

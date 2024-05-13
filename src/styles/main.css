@@ -8,6 +8,7 @@
     font-family: 'Montserrat', Arial, sans-serif;
     color: var(--blue-0);
 }
+
 body {
     font-family: 'Montserrat', Arial, sans-serif;
 }
@@ -24,7 +25,7 @@ body {
 }
 
 .side-menu-item {
-    margin: 2.8125vh 2vw;
+    padding: 2.8125vh 2vw;
     line-height: 4.21875vh;
     display: flex;
     align-items: center;
@@ -72,6 +73,7 @@ body {
     cursor: pointer;
     color: var(--blue-0);
 }
+
 .header-item p:hover {
     color: #09318c;
     /* font-weight: 500; */
@@ -124,8 +126,8 @@ body {
 
 /* Styles for the detail page */
 .detail-page {
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); 
-  }
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
 
 /* invite table starts here */
 .tenant-table-container {
@@ -194,82 +196,196 @@ th {
     z-index: 1;
     background-color: var(--white-1);
 }
+
 /* invite table ends here */
+
+/* Info button  */
+.info-container {
+    position: relative;
+}
+
+.popup {
+    position: absolute;
+    top: 100% !important;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background-color: var(--white-1);
+    min-width: 2rem;
+    width: fit-content;
+    max-width: 12rem;
+    height: auto;
+    min-height: 2.25vh;
+    padding: 0.5rem;
+    font-size: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--light-grey-2);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+}
+
+.info-text-wrap {
+    white-space: pre-line;
+}
+
+.infoIcon {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
 
 /* Drawer */
 .drawer-shadow {
     box-shadow: 0px 3px 26px var(--black-16);
 }
 
-/* font size class  */
-.fs-9 {
-    font-size: 1.265625vh;
+
+/* ufm profile */
+.input {
+    width: 21.5vw !important;
+    height: 2.5rem;
+    padding: 1rem;
 }
-.fs-10 {
-    font-size: 1.40625vh;
+
+.width {
+    width: 21vw;
 }
-.fs-11 {
-    font-size: 1.548vh;
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
 }
-.fs-12 {
-    font-size: 1.6875vh;
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
 }
-.fs-13 {
-    font-size: 1.82925vh !important;
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
-.fs-14 {
-    font-size: 1.96875vh;
+
+/* color classes */
+.color-rejected {
+    color: var(--rejected-0);
 }
-.fs-15 {
-    font-size: 2.109375vh;
+
+.color-black-0 {
+    color: var(--black-0);
 }
-.fs-16 {
-    font-size: 2.25vh;
-}
-.fs-17 {
-    font-size: 2.390625vh;
-}
-.fs-18 {
-    font-size: 2.53125vh;
-}
-.fs-19 {
-    font-size: 2.671875vh;
-}
-.fs-20 {
-    font-size: 2.8125vh;
-}
-.fs-21 {
-    font-size: 2.95425vh;
-}
-.fs-22 {
-    font-size: 3.09375vh;
-}
-.fs-23 {
-    font-size: 3.2355vh;
-}
-.fs-24 {
-    font-size: 3.375vh;
-}
-.fs-25 {
-    font-size: 3.515625vh;
-}
-.fs-30 {
-    font-size: 4.506000vh;
-}
-.fs-43 {
-    font-size: 6.046875vh;
-}
-.fs-60 {
-    font-size: 8.4375vh;
-}
-.fs-64 {
-    font-size: 9vh;
+.color-black-5 {
+    color: var(--black-5);
 }
 
 /* background color css */
 .bg-blue-0 {
     background-color: #003da5;
 }
+
+/* font size class  */
+.fs-9 {
+    font-size: 1.265625vh;
+}
+
+.fs-10 {
+    font-size: 1.40625vh;
+}
+
+.fs-11 {
+    font-size: 1.548vh;
+}
+
+.fs-12 {
+    font-size: 1.6875vh;
+}
+
+.fs-13 {
+    font-size: 1.82925vh !important;
+}
+
+.fs-14 {
+    font-size: 1.96875vh;
+}
+
+.fs-15 {
+    font-size: 2.109375vh;
+}
+
+.fs-16 {
+    font-size: 2.25vh;
+}
+
+.fs-17 {
+    font-size: 2.390625vh;
+}
+
+.fs-18 {
+    font-size: 2.53125vh;
+}
+
+.fs-19 {
+    font-size: 2.671875vh;
+}
+
+.fs-20 {
+    font-size: 2.8125vh;
+}
+
+.fs-21 {
+    font-size: 2.95425vh;
+}
+
+.fs-22 {
+    font-size: 3.09375vh;
+}
+
+.fs-23 {
+    font-size: 3.2355vh;
+}
+
+.fs-24 {
+    font-size: 3.375vh;
+}
+
+.fs-25 {
+    font-size: 3.515625vh;
+}
+
+.fs-30 {
+    font-size: 4.506000vh;
+}
+
+.fs-43 {
+    font-size: 6.046875vh;
+}
+
+.fs-60 {
+    font-size: 8.4375vh;
+}
+
+.fs-64 {
+    font-size: 9vh;
+}
+
 
 
 .color-green-0 {
@@ -668,40 +784,3 @@ th {
     padding-left: 2.8125vh !important;
     padding-right: 2.8125vh !important;
 }
-
-/* ufm profile */
-.input {
-    width: 21.5vw !important;
-    height: 2.5rem;
-    padding: 1rem;
-  }
-.width {
-    width: 21vw;
-}
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-  }
-  
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: 50%;
-    margin-left: -60px;
-  }
-  
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-  }
