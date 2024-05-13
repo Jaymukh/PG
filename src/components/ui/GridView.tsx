@@ -76,7 +76,6 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                     >
                         <VscDiffAdded className="fs-30" />
                     </Button>
-                    <InfoPanel Icon={AiOutlineInfoCircle} text='ilma' />
                 </div>
             </div>
             <div className='d-flex flex-row justify-content-start align-items-start padding-5' style={{ height: 'fit-content', maxHeight: '100%', width: '100%', flexWrap: 'wrap', overflowY: 'auto' }}>
@@ -132,17 +131,20 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                                 variant={ButtonVariant.transparent}
                                                 classname='p-0 padding-right-2'
                                             >
-                                                <MdInfo className="fs-20" />
+                                                {/* <MdInfo className="fs-20" /> */}
+                                                <InfoPanel Icon={MdInfo} text='info' />
                                             </Button>
-                                            <Button
+                                            
+                                            {/* <Button
                                                 theme={ButtonTheme.muted}
                                                 size={ButtonSize.default}
                                                 variant={ButtonVariant.transparent}
                                                 classname='p-0 padding-right-2'
                                             >
                                                 <MdOutlineHub className="fs-20" />
-                                            </Button>
-                                            <Button
+                                            </Button> */}
+                                            <InfoPanel Icon={MdOutlineHub} text='info' />
+                                            {/* <Button
                                                 theme={ButtonTheme.muted}
                                                 size={ButtonSize.default}
                                                 variant={ButtonVariant.transparent}
@@ -150,8 +152,9 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                                 onClick={() => handleEditClick(data)}
                                             >
                                                 <MdModeEdit className="fs-20" />
-                                            </Button>
-                                            <Button
+                                            </Button> */}
+                                            <InfoPanel Icon={MdModeEdit} text='info' onClick={() => handleEditClick(data)} />
+                                            {/* <Button
                                                 theme={ButtonTheme.warning}
                                                 size={ButtonSize.default}
                                                 variant={ButtonVariant.transparent}
@@ -159,7 +162,8 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                                 onClick={() => handleDelete(data['Id'])}
                                             >
                                                 <MdDeleteSweep className="fs-20" />
-                                            </Button>
+                                            </Button> */}
+                                            <InfoPanel Icon={MdDeleteSweep} text='info' onClick={() => handleDelete(data['Id'])} />
                                         </div>
                                     }
                                 </div>
@@ -225,23 +229,25 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                         }
                                         {gridName != 'Users'
                                             && <div className="d-flex flex-row justify-content-end align-items-center">
-                                                <Button
+                                                {/* <Button
                                                     theme={ButtonTheme.muted}
                                                     size={ButtonSize.default}
                                                     variant={ButtonVariant.transparent}
                                                     classname='p-0 padding-right-2'
                                                 >
                                                     <MdInfo className="fs-20" />
-                                                </Button>
-                                                <Button
+                                                </Button> */}
+                                                <InfoPanel Icon={MdInfo} text='info' classname='color-black-5' />
+                                                {/* <Button
                                                     theme={ButtonTheme.muted}
                                                     size={ButtonSize.default}
                                                     variant={ButtonVariant.transparent}
                                                     classname='p-0 padding-right-1'
                                                 >
                                                     <MdOutlineHub className="fs-20" />
-                                                </Button>
-                                                <Button
+                                                </Button> */}
+                                                <InfoPanel Icon={MdOutlineHub} text='Check Connection Check Connection Check Connection' classname='color-black-5' />
+                                                {/* <Button
                                                     theme={ButtonTheme.muted}
                                                     size={ButtonSize.default}
                                                     variant={ButtonVariant.transparent}
@@ -249,8 +255,9 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                                     onClick={() => handleEditClick(data)}
                                                 >
                                                     <MdModeEdit className="fs-20" />
-                                                </Button>
-                                                <Button
+                                                </Button> */}
+                                                <InfoPanel Icon={MdModeEdit} text='edit' onClick={() => handleEditClick(data)} classname='color-black-5' />
+                                                {/* <Button
                                                     theme={ButtonTheme.warning}
                                                     size={ButtonSize.default}
                                                     variant={ButtonVariant.transparent}
@@ -258,7 +265,8 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                                     onClick={() => handleDelete(data['Id'])}
                                                 >
                                                     <MdDeleteSweep className="fs-20" />
-                                                </Button>
+                                                </Button> */}
+                                                <InfoPanel Icon={MdDeleteSweep} text='delete' onClick={() => handleDelete(data['Id'])} classname='color-rejected' />
                                             </div>
                                         }
                                     </div>
