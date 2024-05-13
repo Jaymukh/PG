@@ -9,6 +9,9 @@ import { Card, CardSize, CardVariant } from './ui/card/Card';
 import Body, { BodyColor, BodyType } from './ui/typography/Body';
 import Switch from './ui/switch/Switch';
 import SearchBar from './ui/search/SearchBar';
+import { VscDiffAdded } from "react-icons/vsc";
+import Tooltip from "@material-ui/core/Tooltip";
+import IconButton from "@material-ui/core/IconButton";
 
 // CSS
 import '../styles/main.css';
@@ -24,9 +27,10 @@ interface GridViewProps {
     suggestions: any;
     handleEditClick: (data: any) => void;
     handleDelete: (id: string) => void;
+    handleAddNew: () => void;
 }
 
-const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange, suggestions, handleEditClick, handleDelete }: GridViewProps) => {
+const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange, suggestions, handleEditClick, handleDelete, handleAddNew }: GridViewProps) => {
     const [buttonState, setButtonState] = useState<[number, boolean]>([0, false]);
     const [gridData, setGridData] = useState(tData);
     const [checkedStates, setCheckedStates] = useState(gridData.map(() => true));
@@ -63,6 +67,15 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                     >
                         <BsTable className="fs-25" />
                     </Button>
+                    <Button
+                        theme={ButtonTheme.muted}
+                        size={ButtonSize.default}
+                        variant={ButtonVariant.transparent}
+                        classname=''
+                        onClick={() => handleAddNew()}
+                    >
+                        <VscDiffAdded className="fs-30" />
+                    </Button>
                 </div>
             </div>
             <div className='d-flex flex-row justify-content-start align-items-start padding-5' style={{ height: 'fit-content', maxHeight: '100%', width: '100%', flexWrap: 'wrap', overflowY: 'auto' }}>
@@ -72,7 +85,7 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                             <Card size={CardSize.medium} variant={CardVariant.contained} classname='m-2 padding-0 cursor-pointer m-0' >
                                 <div className='d-flex flex-row justify-content-between align-items-center padding-3'>
                                     <Heading
-                                        title={data['Name']}
+                                        title={data['Name'] ? data['Name'] : data['Profile Name']}
                                         type={TypographyType.h4}
                                         color={TypographyColor.primary}
                                         weight={TypographyWeight.semiBold}
@@ -89,7 +102,7 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                 <hr className='my-0 w-100' />
                                 <div className="d-flex flex-column padding-3">
                                     {Object.keys(data)
-                                        .filter(key => key !== 'Name' )
+                                        .filter(key => key !== 'Name' && key !== 'Profile Name')
                                         .map((key, i) => (
                                             <div key={i} className='d-flex flex-row justify-content-start align-items-center'>
                                                 <Heading
@@ -113,9 +126,13 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                         theme={ButtonTheme.muted}
                                         size={ButtonSize.default}
                                         variant={ButtonVariant.transparent}
-                                        classname='p-0 padding-right-1'
+                                        classname='p-0 padding-right-1 '
                                     >
-                                        <MdInfo className="fs-20" />
+                                        <Tooltip title="Delete">
+                                            <IconButton>
+                                                <MdInfo className="fs-20 " />
+                                            </IconButton>
+                                        </Tooltip>
                                     </Button>
                                     <Button
                                         theme={ButtonTheme.muted}
@@ -165,7 +182,7 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                 <Card size={CardSize.medium} variant={CardVariant.contained} classname='m-2 padding-0 cursor-pointer m-0' >
                                     <div className='d-flex flex-row justify-content-between align-items-center padding-3'>
                                         <Heading
-                                            title={data['Name']}
+                                            title={data['Name'] ? data['Name'] : data['Profile Name']}
                                             type={TypographyType.h4}
                                             color={TypographyColor.primary}
                                             weight={TypographyWeight.semiBold}
@@ -182,7 +199,7 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                     <hr className='my-0 w-100' />
                                     <div className="d-flex flex-column padding-3">
                                         {Object.keys(data)
-                                            .filter(key => key !== 'Name' ) // Filter out the 'name' property
+                                            .filter(key => key !== 'Name' && key !== 'Profile Name') // Filter out the 'name' property
                                             .map((key, i) => (
                                                 <div key={i} className='d-flex flex-row justify-content-start align-items-center'>
                                                     <Heading

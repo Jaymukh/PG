@@ -253,6 +253,9 @@ th {
 .fs-25 {
     font-size: 3.515625vh;
 }
+.fs-30 {
+    font-size: 4.506000vh;
+}
 .fs-43 {
     font-size: 6.046875vh;
 }
@@ -671,3 +674,30 @@ th {
 .width {
     width: 21vw;
 }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }

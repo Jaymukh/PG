@@ -7,6 +7,7 @@ import { Button, ButtonSize, ButtonTheme, ButtonVariant } from './button/Button'
 import * as Constants from '../../utils/Constants'
 import { BiSolidDownArrow, BiSolidUpArrow } from 'react-icons/bi';
 import { MdDeleteSweep, MdModeEdit } from 'react-icons/md';
+import { VscDiffAdded } from "react-icons/vsc";
 import SearchBar from './search/SearchBar';
 
 // CSS
@@ -22,11 +23,14 @@ interface TableViewProps {
     suggestions: any[];
     handleEditClick: (row: any) => void;
     handleDelete: (id: string) => void;
+    handleAddNew:() => void;
+
 }
 
-const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, handleInputChange, handleEditClick, handleDelete }: TableViewProps) => {
+const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, handleInputChange, handleEditClick, handleDelete,handleAddNew }: TableViewProps) => {
     const [buttonState, setButtonState] = useState<[number, boolean]>([0, false]);
-    const [tableData, setTableData] = useState(tData)
+    const [tableData, setTableData] = useState(tData);
+    
     // function for sorting
     const handleSortTable = (item: any, order: string, index: number) => {
         setButtonState([index, order === 'asc' ? true : false]);
@@ -60,6 +64,8 @@ const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, han
         setTableData(tData);
     }, [tData])
 
+   
+
     return (
         <div className='col-lg-12 col-md-12 col-sm-12 col-12 z-index-0 px-0 d-flex flex-column justify-content-start align-items-center ' style={{ height: '91vh' }}>
             <div className="d-flex flex-row justify-content-between align-items-end" style={{ height: '10%', width: '97%' }}>
@@ -83,6 +89,16 @@ const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, han
                     >
                         <BsGrid className="fs-25" />
                     </Button>
+                    <Button
+                        theme={ButtonTheme.muted}
+                        size={ButtonSize.default}
+                        variant={ButtonVariant.transparent}
+                        classname=''
+                        onClick={() => handleAddNew()}
+                    >
+                        <VscDiffAdded className="fs-30"/>
+                    </Button>
+
                 </div>
             </div>
             <div className='d-flex flex-row justify-content-center align-items-start padding-top-bottom-5' style={{ height: '90%', width: '100%' }}>
