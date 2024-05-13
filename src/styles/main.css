@@ -272,6 +272,10 @@ th {
 }
 
 
+.color-green-0 {
+    color: var(--green-0);
+}
+
 /* margin class  */
 .margin-0 {
     margin: 0 !important;

@@ -12,6 +12,7 @@ import { sidebarAnchorState } from '../states';
 import * as Constants from '../utils/Constants';
 import TableView from '../components/ui/TableView';
 import GridView from '../components/GridView';
+import CheckConnection from '../components/ui/CheckConnection';
 
 const Users = () => {
 	const sidebarAnchor = useRecoilValue(sidebarAnchorState);
@@ -19,6 +20,8 @@ const Users = () => {
 	const [selectedData, setSelectedData] = useState<Constants.User | null>(null);
 	const [users, setUsers] = useState(Constants.users);
 	const [openAddNew, setOpenAddNew] = useState(false);
+	const [openCheckConnection, setOpenCheckConnection] = useState(false);
+	const [checkConnectionColor, setcheckConnectionColor] = useState(false);
 	const handleEditClick = (row: Constants.User) => {
 		setSelectedData(row);
 	};
@@ -90,6 +93,18 @@ const Users = () => {
 	const handleCloseAddNew = () => {
 		setOpenAddNew(false);
 	};
+
+	//Check Connection
+	const handleCheckConnection = () =>{
+		setOpenCheckConnection(true);
+		
+	}
+
+	const closeCheckConnectionModal = () =>{
+		setOpenCheckConnection(false);
+		setcheckConnectionColor(true);
+
+	}
 	
 	return (
 		<div className='d-flex flex-row w-100 h-100 primary-bg fixed-header overflow-hidden'>
@@ -98,9 +113,11 @@ const Users = () => {
 				<Header />
 				{
 					gridView ?
-						<GridView setGridView={setGridView} gridName='Users' tData={users} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>
+						<GridView setGridView={setGridView} gridName='Users' tData={users} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew} handleCheckConnection={handleCheckConnection} checkConnectionColor={checkConnectionColor}/>
 						: <TableView setGridView={setGridView} tableName='Users' tData={users} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>						
 				}
+				{openCheckConnection && 
+					<CheckConnection openCheckConnection={openCheckConnection} closeCheckConnectionModal={closeCheckConnectionModal} handleCheckConnection={handleCheckConnection}/>}
 			</div>
 		</div>
 	);

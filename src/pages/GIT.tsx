@@ -12,6 +12,7 @@ import { sidebarAnchorState } from '../states';
 import * as Constants from '../utils/Constants';
 import TableView from '../components/ui/TableView';
 import GridView from '../components/GridView';
+import CheckConnection from '../components/ui/CheckConnection';
 
 const GIT = () => {
     const sidebarAnchor = useRecoilValue(sidebarAnchorState);
@@ -19,6 +20,8 @@ const GIT = () => {
     const [selectedData, setSelectedData] = useState<Constants.GitAccount | null>(null);
 	const [gitAccounts, setGitAccounts] = useState(Constants.gitAccounts);
 	const [openAddNew, setOpenAddNew] = useState(false);
+	const [openCheckConnection, setOpenCheckConnection] = useState(false);
+	const [checkConnectionColor, setcheckConnectionColor] = useState(false);
 	const handleEditClick = (row: Constants.GitAccount) => {
 		setSelectedData(row);
 	};
@@ -91,6 +94,17 @@ const GIT = () => {
 		setOpenAddNew(false);
 	};
 
+	//Check Connection
+	const handleCheckConnection = () =>{
+		setOpenCheckConnection(true);
+		
+	}
+
+	const closeCheckConnectionModal = () =>{
+		setOpenCheckConnection(false);
+		setcheckConnectionColor(true);
+
+	}
 
     return (
         <div className='d-flex flex-row w-100 h-100 primary-bg fixed-header overflow-hidden'>
@@ -99,9 +113,11 @@ const GIT = () => {
                 <Header />
                 {
 					gridView ?
-						<GridView setGridView={setGridView} gridName='Git Accounts' tData={gitAccounts} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>
+						<GridView setGridView={setGridView} gridName='Git Accounts' tData={gitAccounts} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew} handleCheckConnection={handleCheckConnection} checkConnectionColor={checkConnectionColor}/>
 						: <TableView setGridView={setGridView} tableName='Git Accounts' tData={gitAccounts} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>						
 				}
+				{openCheckConnection && 
+					<CheckConnection openCheckConnection={openCheckConnection} closeCheckConnectionModal={closeCheckConnectionModal} handleCheckConnection={handleCheckConnection}/>}
             </div>
 
         </div>

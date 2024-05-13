@@ -13,6 +13,7 @@ import { sidebarAnchorState } from '../states';
 import * as Constants from '../utils/Constants';
 import TableView from '../components/ui/TableView';
 import EditTenants from '../components/EditTenants';
+import CheckConnection from '../components/ui/CheckConnection';
 
 const Administrator = () => {
 	const sidebarAnchor = useRecoilValue(sidebarAnchorState);
@@ -20,6 +21,8 @@ const Administrator = () => {
 	const [selectedData, setSelectedData] = useState<Constants.Tenant | null>(null);
 	const [tenants, setTenants] = useState(Constants.tenants);
 	const [openAddNew, setOpenAddNew] = useState(false);
+	const [openCheckConnection, setOpenCheckConnection] = useState(false);
+	const [checkConnectionColor, setcheckConnectionColor] = useState(false);
 	const handleEditClick = (row: Constants.Tenant) => {
 		setSelectedData(row);
 	};
@@ -95,6 +98,18 @@ const Administrator = () => {
 		setOpenAddNew(false);
 	};
 
+	//Check Connection
+	const handleCheckConnection = () =>{
+		setOpenCheckConnection(true);
+		
+	}
+
+	const closeCheckConnectionModal = () =>{
+		setOpenCheckConnection(false);
+		setcheckConnectionColor(true);
+
+	}
+
 	return (
 		<div className='d-flex flex-row w-100 h-100 primary-bg fixed-header overflow-hidden'>
 			<SideBar sidebarData={Constants.sidebarData} />
@@ -102,11 +117,13 @@ const Administrator = () => {
 				<Header />
 				{
 					gridView ?
-						<GridView setGridView={setGridView} gridName='Tenants' tData={tenants} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>
+						<GridView setGridView={setGridView} gridName='Tenants' tData={tenants} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew} handleCheckConnection={handleCheckConnection} checkConnectionColor={checkConnectionColor}/>
 						: <TableView setGridView={setGridView} tableName='Tenants' tData={tenants} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>						
 				}
 				{selectedData &&
 				<EditTenants selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}
+				{openCheckConnection && 
+					<CheckConnection openCheckConnection={openCheckConnection} closeCheckConnectionModal={closeCheckConnectionModal} handleCheckConnection={handleCheckConnection}/>}
 			</div>
 
 		</div>

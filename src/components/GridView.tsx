@@ -28,9 +28,11 @@ interface GridViewProps {
     handleEditClick: (data: any) => void;
     handleDelete: (id: string) => void;
     handleAddNew: () => void;
+    handleCheckConnection: (id: string) => void;
+    checkConnectionColor?: boolean;
 }
 
-const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange, suggestions, handleEditClick, handleDelete, handleAddNew }: GridViewProps) => {
+const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange, suggestions, handleEditClick, handleDelete, handleAddNew, handleCheckConnection, checkConnectionColor }: GridViewProps) => {
     const [buttonState, setButtonState] = useState<[number, boolean]>([0, false]);
     const [gridData, setGridData] = useState(tData);
     const [checkedStates, setCheckedStates] = useState(gridData.map(() => true));
@@ -128,17 +130,14 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                         variant={ButtonVariant.transparent}
                                         classname='p-0 padding-right-1 '
                                     >
-                                        <Tooltip title="Delete">
-                                            <IconButton>
-                                                <MdInfo className="fs-20 " />
-                                            </IconButton>
-                                        </Tooltip>
+                                        <MdInfo className="fs-20 " />
                                     </Button>
                                     <Button
                                         theme={ButtonTheme.muted}
                                         size={ButtonSize.default}
                                         variant={ButtonVariant.transparent}
                                         classname='p-0 padding-right-1'
+                                        onClick={()=> handleCheckConnection(data['Id'])}
                                     >
                                         <MdOutlineHub className="fs-20" />
                                     </Button>
@@ -232,6 +231,8 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                             size={ButtonSize.default}
                                             variant={ButtonVariant.transparent}
                                             classname='p-0 padding-right-1'
+                                            onClick={() => handleCheckConnection(data['Id'])}
+        
                                         >
                                             <MdOutlineHub className="fs-20" />
                                         </Button>
