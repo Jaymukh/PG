@@ -23,11 +23,11 @@ interface TableViewProps {
     suggestions: any[];
     handleEditClick: (row: any) => void;
     handleDelete: (id: string) => void;
-    handleAddNew:() => void;
+    handleAddNewDrawer:(openAddNew: boolean) => void;
 
 }
 
-const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, handleInputChange, handleEditClick, handleDelete,handleAddNew }: TableViewProps) => {
+const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, handleInputChange, handleEditClick, handleDelete,handleAddNewDrawer }: TableViewProps) => {
     const [buttonState, setButtonState] = useState<[number, boolean]>([0, false]);
     const [tableData, setTableData] = useState(tData);
     
@@ -94,7 +94,7 @@ const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, han
                         size={ButtonSize.default}
                         variant={ButtonVariant.transparent}
                         classname=''
-                        onClick={() => handleAddNew()}
+                        onClick={() => handleAddNewDrawer(true)}
                     >
                         <VscDiffAdded className="fs-30"/>
                     </Button>

@@ -98,8 +98,8 @@ const Users = () => {
 				<Header />
 				{
 					gridView ?
-						<GridView setGridView={setGridView} gridName='Users' tData={users} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>
-						: <TableView setGridView={setGridView} tableName='Users' tData={users} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>						
+						<GridView setGridView={setGridView} gridName='Users' tData={users} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNewDrawer={handleAddNew}/>
+						: <TableView setGridView={setGridView} tableName='Users' tData={users} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNewDrawer={handleAddNew}/>						
 				}
 			</div>
 		</div>

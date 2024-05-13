@@ -131,8 +131,8 @@ const UFM = () => {
                 <Header />
                 {
 					gridView ?
-						<GridView setGridView={setGridView} gridName='UFM Profiles' tData={UfmProfile} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>
-						: <TableView setGridView={setGridView} tableName='UFM Profiles' tData={UfmProfile} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>						
+						<GridView setGridView={setGridView} gridName='UFM Profiles' tData={UfmProfile} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNewDrawer={handleAddNew}/>
+						: <TableView setGridView={setGridView} tableName='UFM Profiles' tData={UfmProfile} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNewDrawer={handleAddNew}/>						
 				}
 				{selectedData &&
 				<EditUFMProfile selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate}/>}

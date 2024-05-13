@@ -27,10 +27,10 @@ interface GridViewProps {
     suggestions: any;
     handleEditClick: (data: any) => void;
     handleDelete: (id: string) => void;
-    handleAddNew: () => void;
+    handleAddNewDrawer: (openAddNew: boolean) => void;
 }
 
-const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange, suggestions, handleEditClick, handleDelete, handleAddNew }: GridViewProps) => {
+const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange, suggestions, handleEditClick, handleDelete, handleAddNewDrawer }: GridViewProps) => {
     const [buttonState, setButtonState] = useState<[number, boolean]>([0, false]);
     const [gridData, setGridData] = useState(tData);
     const [checkedStates, setCheckedStates] = useState(gridData.map(() => true));
@@ -72,7 +72,7 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                         size={ButtonSize.default}
                         variant={ButtonVariant.transparent}
                         classname=''
-                        onClick={() => handleAddNew()}
+                        onClick={() => handleAddNewDrawer(true)}
                     >
                         <VscDiffAdded className="fs-30" />
                     </Button>
@@ -125,45 +125,10 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                     }
                                     {gridName != 'Users'
                                         && <div className="d-flex flex-row justify-content-end align-items-center">
-                                            <Button
-                                                theme={ButtonTheme.muted}
-                                                size={ButtonSize.default}
-                                                variant={ButtonVariant.transparent}
-                                                classname='p-0 padding-right-2'
-                                            >
-                                                {/* <MdInfo className="fs-20" /> */}
-                                                <InfoPanel Icon={MdInfo} text='info' />
-                                            </Button>
-                                            
-                                            {/* <Button
-                                                theme={ButtonTheme.muted}
-                                                size={ButtonSize.default}
-                                                variant={ButtonVariant.transparent}
-                                                classname='p-0 padding-right-2'
-                                            >
-                                                <MdOutlineHub className="fs-20" />
-                                            </Button> */}
-                                            <InfoPanel Icon={MdOutlineHub} text='info' />
-                                            {/* <Button
-                                                theme={ButtonTheme.muted}
-                                                size={ButtonSize.default}
-                                                variant={ButtonVariant.transparent}
-                                                classname='p-0 padding-right-2'
-                                                onClick={() => handleEditClick(data)}
-                                            >
-                                                <MdModeEdit className="fs-20" />
-                                            </Button> */}
-                                            <InfoPanel Icon={MdModeEdit} text='info' onClick={() => handleEditClick(data)} />
-                                            {/* <Button
-                                                theme={ButtonTheme.warning}
-                                                size={ButtonSize.default}
-                                                variant={ButtonVariant.transparent}
-                                                classname='p-0'
-                                                onClick={() => handleDelete(data['Id'])}
-                                            >
-                                                <MdDeleteSweep className="fs-20" />
-                                            </Button> */}
-                                            <InfoPanel Icon={MdDeleteSweep} text='info' onClick={() => handleDelete(data['Id'])} />
+                                            <InfoPanel Icon={MdInfo} text='info' classname='color-black-5' />
+                                                <InfoPanel Icon={MdOutlineHub} text='Check Connection' classname='color-black-5' />
+                                                <InfoPanel Icon={MdModeEdit} text='edit' onClick={() => handleEditClick(data)} classname='color-black-5' />
+                                                <InfoPanel Icon={MdDeleteSweep} text='delete' onClick={() => handleDelete(data['Id'])} classname='color-rejected' />
                                         </div>
                                     }
                                 </div>
@@ -229,43 +194,9 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                         }
                                         {gridName != 'Users'
                                             && <div className="d-flex flex-row justify-content-end align-items-center">
-                                                {/* <Button
-                                                    theme={ButtonTheme.muted}
-                                                    size={ButtonSize.default}
-                                                    variant={ButtonVariant.transparent}
-                                                    classname='p-0 padding-right-2'
-                                                >
-                                                    <MdInfo className="fs-20" />
-                                                </Button> */}
                                                 <InfoPanel Icon={MdInfo} text='info' classname='color-black-5' />
-                                                {/* <Button
-                                                    theme={ButtonTheme.muted}
-                                                    size={ButtonSize.default}
-                                                    variant={ButtonVariant.transparent}
-                                                    classname='p-0 padding-right-1'
-                                                >
-                                                    <MdOutlineHub className="fs-20" />
-                                                </Button> */}
-                                                <InfoPanel Icon={MdOutlineHub} text='Check Connection Check Connection Check Connection' classname='color-black-5' />
-                                                {/* <Button
-                                                    theme={ButtonTheme.muted}
-                                                    size={ButtonSize.default}
-                                                    variant={ButtonVariant.transparent}
-                                                    classname='p-0 padding-right-2'
-                                                    onClick={() => handleEditClick(data)}
-                                                >
-                                                    <MdModeEdit className="fs-20" />
-                                                </Button> */}
+                                                <InfoPanel Icon={MdOutlineHub} text='Check Connection' classname='color-black-5' />
                                                 <InfoPanel Icon={MdModeEdit} text='edit' onClick={() => handleEditClick(data)} classname='color-black-5' />
-                                                {/* <Button
-                                                    theme={ButtonTheme.warning}
-                                                    size={ButtonSize.default}
-                                                    variant={ButtonVariant.transparent}
-                                                    classname='p-0'
-                                                    onClick={() => handleDelete(data['Id'])}
-                                                >
-                                                    <MdDeleteSweep className="fs-20" />
-                                                </Button> */}
                                                 <InfoPanel Icon={MdDeleteSweep} text='delete' onClick={() => handleDelete(data['Id'])} classname='color-rejected' />
                                             </div>
                                         }

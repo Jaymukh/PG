@@ -13,6 +13,7 @@ import { sidebarAnchorState } from '../states';
 import * as Constants from '../utils/Constants';
 import TableView from '../components/ui/TableView';
 import EditTenants from '../components/EditTenants';
+import AddTenants from '../components/AddTenants';
 
 const Administrator = () => {
 	const sidebarAnchor = useRecoilValue(sidebarAnchorState);
@@ -30,24 +31,24 @@ const Administrator = () => {
 	const handleUpdate = (updatedRow: Constants.Tenant) => {
 		// Find the index of the updated tenant in the tenants array
 		const index = tenants.findIndex(tenant => tenant['Id'] === updatedRow['Id']);
-		
+
 		if (index !== -1) {
 			// Create a copy of the tenants array
 			const updatedTenants = [...tenants];
-			
+
 			// Update the tenant object at the found index
 			updatedTenants[index] = updatedRow;
-	
+
 			// Set the state with the updated array
 			setTenants(updatedTenants);
-		}	
+		}
 		setSelectedData(null);
 	};
 
 	const handleDelete = (id: string) => {
 		// Filter out the tenant with the provided ID
 		const updatedTenants = tenants.filter(tenant => tenant['Id'] !== id);
-		
+
 		// Update the tenants state with the filtered array
 		setTenants(updatedTenants);
 	};
@@ -88,11 +89,13 @@ const Administrator = () => {
 			setSuggestions(result || []);
 		}
 	}, [searchTerm]);
-	 // Add new drawer
-	 const handleAddNew = () => {
-		setOpenAddNew(true);
+
+	// Add new drawer
+	const handleAddNewDrawer = (openAddNew: boolean) => {
+		setOpenAddNew(openAddNew);
 	};
-	const handleCloseAddNew = () => {
+
+	const handleAddNewData = (newData : any) => {
 		setOpenAddNew(false);
 	};
 
@@ -103,11 +106,14 @@ const Administrator = () => {
 				<Header />
 				{
 					gridView ?
-						<GridView setGridView={setGridView} gridName='Tenants' tData={tenants} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>
-						: <TableView setGridView={setGridView} tableName='Tenants' tData={tenants} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>						
+						<GridView setGridView={setGridView} gridName='Tenants' tData={tenants} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick} handleDelete={handleDelete} handleAddNewDrawer={handleAddNewDrawer} />
+						: <TableView setGridView={setGridView} tableName='Tenants' tData={tenants} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick} handleDelete={handleDelete} handleAddNewDrawer={handleAddNewDrawer} />
 				}
 				{selectedData &&
-				<EditTenants selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}
+					<EditTenants selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}
+
+				{openAddNew &&
+					<AddTenants openAddNew={openAddNew} handleAddNewDrawer={handleAddNewDrawer} handleAddNewData={handleAddNewData} />}
 			</div>
 
 		</div>
