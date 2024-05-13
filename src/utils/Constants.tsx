@@ -1,5 +1,5 @@
-import { MdGroupAdd, MdMail, MdContactSupport } from 'react-icons/md';
-import { IoListSharp, IoSettingsSharp } from 'react-icons/io5';
+
+import {IoSettingsSharp } from 'react-icons/io5';
 import React from 'react';
 
 export interface HeaderData {
@@ -298,6 +298,226 @@ export const tenants: Tenant[] = [
     },
 ]
 
+
+// UFM Profile data
+export interface UfmProfileHeader {
+    key: string;
+    value: string;
+}
+
+export const UFMProfileHeader: UfmProfileHeader[] = [
+    {
+        key: 'environment',
+        value: 'Environment'
+    },
+    {
+        key: 'profile name',
+        value: 'Profile Name'
+    },
+    {
+        key: 'primary site',
+        value: 'Primary Site'
+    },
+    {
+        key: 'secondary site',
+        value: 'Secondary Site'
+    },
+    {
+        key: 'git repo',
+        value: 'Git Repo'
+    },
+    {
+        key: 'lats git backup on',
+        value: 'Lats Git backup on'
+    }
+];
+export interface UfmProfile {
+    key: string;
+    environment: string;
+    profilename: string;
+    primarysite: string;
+    secondarysite: string;
+    gitrepo: string;
+    latsgitbackupon: string;
+}
+export const UFMProfile: UfmProfile[] = [
+    {
+        key: 'ufm1',
+        environment: 'QA',
+        profilename: 'Profile-1',
+        primarysite: 'T1',
+        secondarysite: 'T2',
+        gitrepo: 'GITQA',
+        latsgitbackupon: ''
+    },
+    {
+        key: 'ufm2',
+        environment: 'QA',
+        profilename: 'Profile-1',
+        primarysite: 'T1',
+        secondarysite: 'T2',
+        gitrepo: 'GITQA',
+        latsgitbackupon: ''
+    },
+    {
+        key: 'ufm3',
+        environment: 'QA',
+        profilename: 'Profile-1',
+        primarysite: 'T1',
+        secondarysite: 'T2',
+        gitrepo: 'GITQA',
+        latsgitbackupon: ''
+    },
+    {
+        key: 'ufm4',
+        environment: 'QA',
+        profilename: 'Profile-1',
+        primarysite: 'T1',
+        secondarysite: 'T2',
+        gitrepo: 'GITQA',
+        latsgitbackupon: ''
+    },
+    {
+        key: 'ufm5',
+        environment: 'QA',
+        profilename: 'Profile-1',
+        primarysite: 'T1',
+        secondarysite: 'T2',
+        gitrepo: 'GITQA',
+        latsgitbackupon: ''
+    },
+    {
+        key: 'ufm6',
+        environment: 'QA',
+        profilename: 'Profile-1',
+        primarysite: 'T1',
+        secondarysite: 'T2',
+        gitrepo: 'GITQA',
+        latsgitbackupon: ''
+    },
+    {
+        key: 'ufm7',
+        environment: 'QA',
+        profilename: 'Profile-1',
+        primarysite: 'T1',
+        secondarysite: 'T2',
+        gitrepo: 'GITQA',
+        latsgitbackupon: ''
+    },
+    {
+        key: 'ufm8',
+        environment: 'QA',
+        profilename: 'Profile-1',
+        primarysite: 'T1',
+        secondarysite: 'T2',
+        gitrepo: 'GITQA',
+        latsgitbackupon: ''
+    }
+]
+
+export interface environmentOptions {
+    key: string;
+    value: string;
+}
+
+export const Environment: environmentOptions[] = [
+    {
+        key: 'E1',
+        value: 'Environment1'
+    },
+    {
+        key: 'E2',
+        value: 'Environment2'
+    },
+    {
+        key: 'E3',
+        value: 'Environment3'
+    },
+    {
+        key: 'E4',
+        value: 'Environment4'
+    }
+];
+
+export interface primarysiteOptions {
+    key: string;
+    value: string;
+}
+
+export const Primarysite: primarysiteOptions[] = [
+    {
+        key:'T1', value:'Tenant1'
+    },
+    {
+        key:'T2', value:'Tenant2'
+    },
+    {
+        key:'T3', value:'Tenant3'
+    },
+    {
+        key:'T4', value:'Tenant4'
+    }
+];
+
+export interface secondarysiteOptions {
+    key: string;
+    value: string;
+}
+
+export const Secondarysite: secondarysiteOptions[] = [
+    {
+        key:'T1', value:'Tenant1'
+    },
+    {
+        key:'T2', value:'Tenant2'
+    },
+    {
+        key:'T3', value:'Tenant3'
+    },
+    {
+        key:'T4', value:'Tenant4'
+    }
+];
+
+export interface gitOptions {
+    key: string;
+    value: string;
+}
+
+export const Git: gitOptions[] = [
+    {
+        key:'T1', value:'GITQA1'
+    },
+    {
+        key:'T2', value:'GITQA2'
+    },
+    {
+        key:'T3', value:'GITPROD3'
+    },
+    {
+        key:'T4', value:'GITPROD4'
+    }
+];
+
+export interface stateOptions {
+    key: string;
+    value: string;
+}
+
+export const State: stateOptions[] = [
+    {
+        key:'S1', value:'State1'
+    },
+    {
+        key:'S2', value:'State2'
+    },
+    {
+        key:'S3', value:'State3'
+    },
+    {
+        key:'S4', value:'State4'
+    }
+];
 export interface GitAccount {
     'Id': string;
     'Name': string;
@@ -419,13 +639,6 @@ export const users: User[] = [
     },
 ]
 
-// Region - region1, region2
-// Environment - environment1, environment2
-// State - draft, active, disabled
-// Git- git1, git2
-// Primary site - site1, site2
-// Secondary site - site1, site2
-// Auth method - Personal token, oauth2
 
 export const regions: TenantHeader[] = [
     {

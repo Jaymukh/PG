@@ -37,14 +37,14 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
                         type={TypographyType.h4}
                         color={TypographyColor.dark}
                         weight={TypographyWeight.medium}
-                        classname='padding-0 text-start padding-right-3 margin-0'
+                        classname='padding-0 text-start padding-right-3 margin-3 fw-bold'
                     />
                     <Button
                         theme={ButtonTheme.primary}
                         variant={ButtonVariant.transparent}
                         onClick={() => toggleFunction(false)}
                         // type='button'
-                        classname='padding-left-right-0'
+                        classname='padding-left-right-0 margin-3 fw-bold'
                     >
                         <AiOutlineClose className="fs-20" />
                     </Button>
