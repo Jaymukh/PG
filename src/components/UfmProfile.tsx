@@ -14,13 +14,13 @@ import EditUFMProfile from '../components/EditUFMProfile';
 // CSS
 import '../styles/main.css';
 interface rowData{
-    key: string;
-    environment: string;
-    profilename: string;
-    primarysite: string;
-    secondarysite: string;
-    gitrepo: string;
-    latsgitbackupon: string;
+    'Id': string;
+    'Environment': string;
+    'Profile Name': string;
+    'Primary Site': string;
+    'Secondary Site': string;
+    'Gitrepo': string;
+    'Last git backupon': string;
 }
 // import UFMProfileNew from './UFMProfileNew';
 
@@ -138,13 +138,13 @@ const UfmProfile = () => {
                         <tbody>
                             {UfmProfile.map((row) => (
                                 <tr
-                                    key={row.key}>
-                                    <td>{row.environment}</td>
-                                    <td>{row.profilename}</td>
-                                    <td>{row.primarysite}</td>
-                                    <td>{row.secondarysite}</td>
-                                    <td>{row.gitrepo}</td>
-                                    <td>{row.latsgitbackupon}</td>
+                                    key={row.Id}>
+                                    <td>{row.Environment}</td>
+                                    <td>{row['Profile Name']}</td>
+                                    <td>{row['Primary Site']}</td>
+                                    <td>{row['Secondary Site']}</td>
+                                    <td>{row.Gitrepo}</td>
+                                    <td>{row['Last git backupon']}</td>
                                     <td className='text-center' style={{ whiteSpace: 'nowrap' }}>
                                         <Button
                                             theme={ButtonTheme.muted}
@@ -173,8 +173,8 @@ const UfmProfile = () => {
             
             {openInviteNew &&
 				<UFMProfileNew openInviteNew={openInviteNew}  handleCloseInviteNew={handleCloseInviteNew} setOpenInviteSent={setOpenInviteSent} />}
-            {selectedData &&
-				<EditUFMProfile selectedData={selectedData} handleCloseDialog={handleCloseDialog} />}
+            {/* {selectedData &&
+				<EditUFMProfile selectedData={selectedData} handleCloseDialog={handleCloseDialog} />} */}
 
         </div>
     );

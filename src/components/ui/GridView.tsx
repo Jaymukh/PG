@@ -1,6 +1,7 @@
 // External Libraries
 import { useEffect, useState } from 'react';
 import { BsTable } from "react-icons/bs";
+import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { Heading, TypographyColor, TypographyType, TypographyWeight } from './typography/Heading';
 import { Button, ButtonSize, ButtonTheme, ButtonVariant } from './button/Button';
 import * as Constants from '../../utils/Constants';
@@ -9,9 +10,11 @@ import { Card, CardSize, CardVariant } from './card/Card';
 import Body, { BodyColor, BodyType } from './typography/Body';
 import Switch from './switch/Switch';
 import SearchBar from './search/SearchBar';
+import { VscDiffAdded } from "react-icons/vsc";
 
 // CSS
 import '../../styles/main.css';
+import InfoPanel from './InfoPanel';
 
 // Components
 
@@ -24,9 +27,10 @@ interface GridViewProps {
     suggestions: any;
     handleEditClick: (data: any) => void;
     handleDelete: (id: string) => void;
+    handleAddNew: () => void;
 }
 
-const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange, suggestions, handleEditClick, handleDelete }: GridViewProps) => {
+const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange, suggestions, handleEditClick, handleDelete, handleAddNew }: GridViewProps) => {
     const [buttonState, setButtonState] = useState<[number, boolean]>([0, false]);
     const [gridData, setGridData] = useState(tData);
     const [checkedStates, setCheckedStates] = useState(gridData.map(() => true));
@@ -63,6 +67,16 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                     >
                         <BsTable className="fs-25" />
                     </Button>
+                    <Button
+                        theme={ButtonTheme.muted}
+                        size={ButtonSize.default}
+                        variant={ButtonVariant.transparent}
+                        classname=''
+                        onClick={() => handleAddNew()}
+                    >
+                        <VscDiffAdded className="fs-30" />
+                    </Button>
+                    <InfoPanel Icon={AiOutlineInfoCircle} text='ilma' />
                 </div>
             </div>
             <div className='d-flex flex-row justify-content-start align-items-start padding-5' style={{ height: 'fit-content', maxHeight: '100%', width: '100%', flexWrap: 'wrap', overflowY: 'auto' }}>

@@ -5,24 +5,30 @@ import Select, { SelectSize }from '../components/ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from './ui/button/Button';
 import * as Constants from '../utils/Constants';
 interface rowData{
-    key: string;
-    environment: string;
-    profilename: string;
-    primarysite: string;
-    secondarysite: string;
-    gitrepo: string;
-    latsgitbackupon: string;
+    'Id': string;
+    'Environment': string;
+    'Profile Name': string;
+    'Primary Site': string;
+    'Secondary Site': string;
+    'Gitrepo': string;
+    'Last git backupon': string;
 }
 interface UFMProfileNewProps{
     selectedData: rowData
     handleCloseDialog: () => void;
+    handleUpdate: (updatedRow: any) => void;
 }
-const EditUFMProfile: React.FC<UFMProfileNewProps> = ({ selectedData, handleCloseDialog }) => {
+const EditUFMProfile: React.FC<UFMProfileNewProps> = ({ selectedData, handleCloseDialog, handleUpdate }) => {
+    const handleUpdateClick = () => {
+            handleUpdate(selectedData);
+            // setError({ type: 'Error', message: 'All fields are mendatory!' });
+        
+    };
     return (
     <div>
      <Drawer
                 id='newufmprofile'
-                title='New UFP Profile'
+                title='Edit UFP Profile'
                 isOpen={handleCloseDialog!= null}
                 toggleFunction={handleCloseDialog}
             >
@@ -31,13 +37,13 @@ const EditUFMProfile: React.FC<UFMProfileNewProps> = ({ selectedData, handleClos
                     <Input
                         type="text"
                         placeholder="Enter here profile name"
-                        value={selectedData.environment}
+                        value={selectedData.Environment}
                         name='profile name'
                     />     
                     <h6 className='my-1 font-87-5 text-start'>Enviroment</h6>
                     <Select
                         options={Constants?.Environment}
-                        value={selectedData.environment}
+                        value={selectedData.Environment}
                         labelKey='value'
                         valueKey='value'
                         name='role'
@@ -46,7 +52,7 @@ const EditUFMProfile: React.FC<UFMProfileNewProps> = ({ selectedData, handleClos
                     <h6 className='mt-1 font-87-5 text-start'>Primary Site</h6>
                     <Select
                         options={Constants?.Primarysite}
-                        value={selectedData.primarysite}
+                        value={selectedData['Primary Site']}
                         labelKey='value'
                         valueKey='value'
                         size={SelectSize.large}
@@ -56,7 +62,7 @@ const EditUFMProfile: React.FC<UFMProfileNewProps> = ({ selectedData, handleClos
                     <h6 className='mt-1 font-87-5 text-start'>Secondary Site</h6>
                     <Select
                         options={Constants?.Secondarysite}
-                        value={selectedData.secondarysite}
+                        value={selectedData['Secondary Site']}
                         labelKey='value'
                         valueKey='value'
                         size={SelectSize.large}
@@ -65,7 +71,7 @@ const EditUFMProfile: React.FC<UFMProfileNewProps> = ({ selectedData, handleClos
                     <h6 className='mt-1 font-87-5 text-start'>Git</h6>
                     <Select
                         options={Constants?.Git}
-                        value={selectedData.gitrepo}
+                        value={selectedData.Gitrepo}
                         labelKey='value'
                         valueKey='value'
                         size={SelectSize.large}
@@ -85,12 +91,13 @@ const EditUFMProfile: React.FC<UFMProfileNewProps> = ({ selectedData, handleClos
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}
                         variant={ButtonVariant.bordered}
-                        // onClick={() => handleSubmitInviteNew()}
+                        onClick={() => handleUpdateClick()}
                         classname='mt-4 mb-3'
                         
                     >
                         Update
                     </Button>
+                    
                 </div>
             </Drawer>
     </div>

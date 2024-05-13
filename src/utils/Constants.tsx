@@ -332,86 +332,86 @@ export const UFMProfileHeader: UfmProfileHeader[] = [
     }
 ];
 export interface UfmProfile {
-    key: string;
-    environment: string;
-    profilename: string;
-    primarysite: string;
-    secondarysite: string;
-    gitrepo: string;
-    latsgitbackupon: string;
+    'Id': string;
+    'Environment': string;
+    'Profile Name': string;
+    'Primary Site': string;
+    'Secondary Site': string;
+    'Gitrepo': string;
+    'Last git backupon': string;
 }
 export const UFMProfile: UfmProfile[] = [
     {
-        key: 'ufm1',
-        environment: 'QA',
-        profilename: 'Profile-1',
-        primarysite: 'T1',
-        secondarysite: 'T2',
-        gitrepo: 'GITQA',
-        latsgitbackupon: ''
+        'Id': '1',
+        'Environment': 'QA',
+        'Profile Name': 'Profile-1',
+        'Primary Site': 'T1',
+        'Secondary Site': 'T2',
+        'Gitrepo': 'GITQA',
+        'Last git backupon': ''
     },
     {
-        key: 'ufm2',
-        environment: 'QA',
-        profilename: 'Profile-1',
-        primarysite: 'T1',
-        secondarysite: 'T2',
-        gitrepo: 'GITQA',
-        latsgitbackupon: ''
+        'Id': '2',
+        'Environment': 'QA',
+        'Profile Name': 'Profile-1',
+        'Primary Site': 'T1',
+        'Secondary Site': 'T2',
+        'Gitrepo': 'GITQA',
+        'Last git backupon': ''
     },
     {
-        key: 'ufm3',
-        environment: 'QA',
-        profilename: 'Profile-1',
-        primarysite: 'T1',
-        secondarysite: 'T2',
-        gitrepo: 'GITQA',
-        latsgitbackupon: ''
+        'Id': '3',
+        'Environment': 'QA',
+        'Profile Name': 'Profile-1',
+        'Primary Site': 'T1',
+        'Secondary Site': 'T2',
+        'Gitrepo': 'GITQA',
+        'Last git backupon': ''
     },
     {
-        key: 'ufm4',
-        environment: 'QA',
-        profilename: 'Profile-1',
-        primarysite: 'T1',
-        secondarysite: 'T2',
-        gitrepo: 'GITQA',
-        latsgitbackupon: ''
+        'Id': '4',
+        'Environment': 'QA',
+        'Profile Name': 'Profile-1',
+        'Primary Site': 'T1',
+        'Secondary Site': 'T2',
+        'Gitrepo': 'GITQA',
+        'Last git backupon': ''
     },
     {
-        key: 'ufm5',
-        environment: 'QA',
-        profilename: 'Profile-1',
-        primarysite: 'T1',
-        secondarysite: 'T2',
-        gitrepo: 'GITQA',
-        latsgitbackupon: ''
+        'Id': '5',
+        'Environment': 'QA',
+        'Profile Name': 'Profile-1',
+        'Primary Site': 'T1',
+        'Secondary Site': 'T2',
+        'Gitrepo': 'GITQA',
+        'Last git backupon': ''
     },
     {
-        key: 'ufm6',
-        environment: 'QA',
-        profilename: 'Profile-1',
-        primarysite: 'T1',
-        secondarysite: 'T2',
-        gitrepo: 'GITQA',
-        latsgitbackupon: ''
+        'Id': '6',
+        'Environment': 'QA',
+        'Profile Name': 'Profile-1',
+        'Primary Site': 'T1',
+        'Secondary Site': 'T2',
+        'Gitrepo': 'GITQA',
+        'Last git backupon': ''
     },
     {
-        key: 'ufm7',
-        environment: 'QA',
-        profilename: 'Profile-1',
-        primarysite: 'T1',
-        secondarysite: 'T2',
-        gitrepo: 'GITQA',
-        latsgitbackupon: ''
+        'Id': '7',
+        'Environment': 'QA',
+        'Profile Name': 'Profile-1',
+        'Primary Site': 'T1',
+        'Secondary Site': 'T2',
+        'Gitrepo': 'GITQA',
+        'Last git backupon': ''
     },
     {
-        key: 'ufm8',
-        environment: 'QA',
-        profilename: 'Profile-1',
-        primarysite: 'T1',
-        secondarysite: 'T2',
-        gitrepo: 'GITQA',
-        latsgitbackupon: ''
+        'Id': '',
+        'Environment': 'QA',
+        'Profile Name': 'Profile-1',
+        'Primary Site': 'T1',
+        'Secondary Site': 'T2',
+        'Gitrepo': 'GITQA',
+        'Last git backupon': ''
     }
 ]
 

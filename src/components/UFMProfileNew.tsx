@@ -21,14 +21,14 @@ const UFMProfileNew: React.FC<UFMProfileNewProps> = ({ openInviteNew, handleClos
                 toggleFunction={handleCloseInviteNew}
             >
                 <div className='d-flex justify-content-center flex-column px-3'>
-                    <h6 className='mt-1 font-87-5 text-start fw-bold'>Profile Name</h6>
+                    <h6 className='mt-1 font-87-5 text-start fw-bold '>Profile Name</h6>
                     <Input
                         type="text"
                         placeholder="Enter here profile name"
                         // value={newData.name}
                         name='profile name'
                     />     
-                    <h6 className='my-1 font-87-5 text-start fw-bold'>Enviroment</h6>
+                    <h6 className='my-1 font-87-5 text-start fw-bold mt-3'>Enviroment</h6>
                     <Select
                         options={Constants?.Environment}
                         value=""
@@ -37,7 +37,7 @@ const UFMProfileNew: React.FC<UFMProfileNewProps> = ({ openInviteNew, handleClos
                         name='role'
                         size={SelectSize.large}
                     />
-                    <h6 className='mt-1 font-87-5 text-start fw-bold'>Primary Site</h6>
+                    <h6 className='mt-1 font-87-5 text-start fw-bold mt-3'>Primary Site</h6>
                     <Select
                         options={Constants?.Primarysite}
                         value=""
@@ -47,7 +47,7 @@ const UFMProfileNew: React.FC<UFMProfileNewProps> = ({ openInviteNew, handleClos
                         name='company'
                         
                     />
-                    <h6 className='mt-1 font-87-5 text-start'>Secondary Site</h6>
+                    <h6 className='mt-1 font-87-5 text-start fw-bold mt-3'>Secondary Site</h6>
                     <Select
                         options={Constants?.Secondarysite}
                         value=""
@@ -56,7 +56,7 @@ const UFMProfileNew: React.FC<UFMProfileNewProps> = ({ openInviteNew, handleClos
                         size={SelectSize.large}
                         name='company_type'
                     />
-                    <h6 className='mt-1 font-87-5 text-start'>Git</h6>
+                    <h6 className='mt-1 font-87-5 text-start fw-bold mt-3'>Git</h6>
                     <Select
                         options={Constants?.Git}
                         value=""
@@ -65,7 +65,7 @@ const UFMProfileNew: React.FC<UFMProfileNewProps> = ({ openInviteNew, handleClos
                         size={SelectSize.large}
                         name='company_type'
                     />
-                    <h6 className='mt-1 font-87-5 text-start'>State</h6>
+                    <h6 className='mt-1 font-87-5 text-start fw-bold mt-3'>State</h6>
                     <Select
                         options={Constants?.State}
                         value=""
@@ -82,8 +82,18 @@ const UFMProfileNew: React.FC<UFMProfileNewProps> = ({ openInviteNew, handleClos
                         // onClick={() => handleSubmitInviteNew()}
                         classname='mt-4 mb-3'
                         
-                    >
-                        Add
+                    > 
+                        Draft
+                    </Button>
+                    <Button
+                        theme={ButtonTheme.primary}
+                        size={ButtonSize.large}
+                        variant={ButtonVariant.bordered}
+                        // onClick={() => handleSubmitInviteNew()}
+                        classname='mt-2 mb-3'
+                        
+                    > 
+                        Save
                     </Button>
                 </div>
             </Drawer>

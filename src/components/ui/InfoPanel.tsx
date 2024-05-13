@@ -1,19 +1,21 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { AiOutlineInfoCircle } from 'react-icons/ai';
+import React, { useState, useRef } from 'react';
 import '../../styles/main.css';
 
 interface InfoPanelProps {
+    Icon: React.ElementType;
     text: string;
     classname?: string;
 }
-const InfoPanel: React.FC<InfoPanelProps> = ({ text, classname }) => {
+
+const InfoPanel: React.FC<InfoPanelProps> = ({ Icon, text, classname }) => {
     const menuRef = useRef<HTMLDivElement | null>(null);
     const [showPopup, setShowPopup] = useState(false);
     const [popupStyle, setPopupStyle] = useState<{ left: number | string; right: number | string; width: any; transform?: string; }>({ left: '', right: '', width: 192 });
 
-    const handlePopup = () => {
+    const handleMouseEnter = () => {
         const popupWidth = 192;
         const infoButtonPosition = menuRef.current?.getBoundingClientRect();
+        
 
         if (infoButtonPosition) {
             const hasSpaceOnLeft = infoButtonPosition.left >= popupWidth / 2;
@@ -33,50 +35,28 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, classname }) => {
             }
         }
         setShowPopup(true);
-    }
-
-
-    const handleClickOutside = (event: { target: any; }) => {
-        if (menuRef.current && !menuRef.current.contains(event.target)) {
-            setShowPopup(false);
-        }
     };
 
+    const handleMouseLeave = () => {
+        setShowPopup(false);
+    };
 
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-    
     return (
         <div className="info-container" ref={menuRef}>
             <div
                 className="cursor-pointer infoIcon"
-                onClick={() => handlePopup()}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
             >
-                <AiOutlineInfoCircle className={`icon-color-5 margin-left-1 fs-20 ${classname}`} />
+                <Icon className={`icon-color-5 margin-left-1 fs-20 ${classname}`} />
             </div>
             {showPopup && (
                 <div className='popup' style={{ ...popupStyle }}>
                     <p className='margin-0 text-start info-text-wrap' dangerouslySetInnerHTML={{ __html: text }} />
-                    {/* {showMore
-                        &&
-                        <Button
-                            theme={ButtonTheme.primary}
-                            size={ButtonSize.xsmall}
-                            variant={ButtonVariant.transparent}
-                            onClick={() => handleReadMore()}
-                            classname='margin-0 h-auto padding-0'
-                        >
-                            Read More
-                        </Button>
-                    } */}
                 </div>
             )}
         </div>
-    )
-}
+    );
+};
 
-export default InfoPanel
+export default InfoPanel;

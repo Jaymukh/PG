@@ -21,6 +21,7 @@ const GIT = () => {
 
     const [selectedData, setSelectedData] = useState<Constants.GitAccount | null>(null);
 	const [gitAccounts, setGitAccounts] = useState(Constants.gitAccounts);
+	const [openAddNew, setOpenAddNew] = useState(false);
 	const handleEditClick = (row: Constants.GitAccount) => {
 		setSelectedData(row);
 	};
@@ -85,6 +86,14 @@ const GIT = () => {
 		}
 	}, [searchTerm]);
 
+	 // Add new drawer
+	 const handleAddNew = () => {
+		setOpenAddNew(true);
+	};
+	const handleCloseAddNew = () => {
+		setOpenAddNew(false);
+	};
+
 
     return (
         <div className='d-flex flex-row w-100 h-100 primary-bg fixed-header overflow-hidden'>
@@ -93,8 +102,8 @@ const GIT = () => {
                 <Header />
                 {
 					gridView ?
-						<GridView setGridView={setGridView} gridName='Git Accounts' tData={gitAccounts} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} />
-						: <TableView setGridView={setGridView} tableName='Git Accounts' tData={gitAccounts} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} />						
+						<GridView setGridView={setGridView} gridName='Git Accounts' tData={gitAccounts} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>
+						: <TableView setGridView={setGridView} tableName='Git Accounts' tData={gitAccounts} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>						
 				}
                 {selectedData &&
 				<EditGit selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}
