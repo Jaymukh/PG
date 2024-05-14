@@ -8,13 +8,13 @@ import { Heading, TypographyColor, TypographyType, TypographyWeight } from './ty
 interface ConfirmDeleteProps {
     openCheckConnection: boolean;
     closeCheckConnectionModal: () => void;
-    handleCheckConnection: () => void;
+    
 }
 
 const CheckConnection: React.FC<ConfirmDeleteProps> = ({
     openCheckConnection,
     closeCheckConnectionModal,
-    handleCheckConnection
+   
 }) => {
     return (
         <div data-testid="ConfirmDelete">

@@ -15,7 +15,8 @@ import GridView from '../components/ui/GridView';
 import EditUFMProfile from '../components/EditUFMProfile';
 import ConfirmDelete from '../components/ConfirmDelete';
 import UFMProfileNew from '../components/UFMProfileNew';
-import CheckConnection from '../components/ui/CheckConnection';
+
+
 
 const UFM = () => {
 	const sidebarAnchor = useRecoilValue(sidebarAnchorState);
@@ -26,9 +27,9 @@ const UFM = () => {
 	const [selectedUserId, setSelectedUserId] = useState<string>('');
 	const [openAddNew, setOpenAddNew] = useState(false);
 	const [openInviteSent, setOpenInviteSent] = useState(false);
-	const [openCheckConnection, setOpenCheckConnection] = useState(false);
-	const [checkConnectionColor, setcheckConnectionColor] = useState(false);
-
+	
+	
+ 
 	const handleEditClick = (row: Constants.UfmProfile) => {
 		setSelectedData(row);
 	};
@@ -127,17 +128,6 @@ const UFM = () => {
 		setOpenAddNew(false);
 	};
 
-	//Check Connection
-	const handleCheckConnection = () =>{
-		setOpenCheckConnection(true);
-		
-	}
-
-	const closeCheckConnectionModal = () =>{
-		setOpenCheckConnection(false);
-		setcheckConnectionColor(true);
-
-	}
 	
 	return (
 		<div className='d-flex flex-row w-100 h-100 primary-bg fixed-header overflow-hidden'>
@@ -146,7 +136,7 @@ const UFM = () => {
                 <Header />
                 {
 					gridView ?
-						<GridView setGridView={setGridView} gridName='UFM Profiles' tData={UfmProfile} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew} handleCheckConnection={handleCheckConnection} checkConnectionColor={checkConnectionColor}/>
+						<GridView setGridView={setGridView} gridName='UFM Profiles' tData={UfmProfile} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew} />
 						: <TableView setGridView={setGridView} tableName='UFM Profiles' tData={UfmProfile} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>						
 				}
 				{selectedData &&
@@ -156,8 +146,7 @@ const UFM = () => {
 					closeConfirmDeleteModal={closeConfirmDeleteModal} handleDeleteClick={handleDeleteClick} />}
 				{openAddNew &&
 				<UFMProfileNew openInviteNew={openAddNew}  handleCloseInviteNew={handleCloseAddNew} setOpenInviteSent={setOpenInviteSent} />}
-				{openCheckConnection && 
-					<CheckConnection openCheckConnection={openCheckConnection} closeCheckConnectionModal={closeCheckConnectionModal} handleCheckConnection={handleCheckConnection}/>}
+				
             </div>
 
         </div>

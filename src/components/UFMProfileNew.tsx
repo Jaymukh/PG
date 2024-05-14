@@ -75,12 +75,13 @@ const UFMProfileNew: React.FC<UFMProfileNewProps> = ({ openInviteNew, handleClos
                         name='company_type'
                     />
                     {/* <p className='my-3 Note d-flex justify-content-center align-items-center'>Note: Admins will be able to invite users to the platform</p> */}
+                    <div className = "d-flex flex-row">
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}
                         variant={ButtonVariant.bordered}
                         // onClick={() => handleSubmitInviteNew()}
-                        classname='mt-4 mb-3'
+                        classname='mt-4 mb-3 margin-right-2'
                         
                     > 
                         Draft
@@ -90,11 +91,12 @@ const UFMProfileNew: React.FC<UFMProfileNewProps> = ({ openInviteNew, handleClos
                         size={ButtonSize.large}
                         variant={ButtonVariant.bordered}
                         // onClick={() => handleSubmitInviteNew()}
-                        classname='mt-2 mb-3'
+                        classname='mt-4 mb-3'
                         
                     > 
                         Save
                     </Button>
+                    </div>
                 </div>
             </Drawer>
     </div>

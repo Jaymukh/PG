@@ -99,17 +99,6 @@ const Administrator = () => {
 		setOpenAddNew(false);
 	};
 
-	//Check Connection
-	const handleCheckConnection = () =>{
-		setOpenCheckConnection(true);
-		
-	}
-
-	const closeCheckConnectionModal = () =>{
-		setOpenCheckConnection(false);
-		setcheckConnectionColor(true);
-
-	}
 
 	return (
 		<div className='d-flex flex-row w-100 h-100 primary-bg fixed-header overflow-hidden'>
@@ -118,13 +107,12 @@ const Administrator = () => {
 				<Header />
 				{
 					gridView ?
-						<GridView setGridView={setGridView} gridName='Tenants' tData={tenants} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew} handleCheckConnection={handleCheckConnection} checkConnectionColor={checkConnectionColor}/>
+						<GridView setGridView={setGridView} gridName='Tenants' tData={tenants} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew} checkConnectionColor={checkConnectionColor}/>
 						: <TableView setGridView={setGridView} tableName='Tenants' tData={tenants} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>						
 				}
 				{selectedData &&
 				<EditTenants selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}
-				{openCheckConnection && 
-					<CheckConnection openCheckConnection={openCheckConnection} closeCheckConnectionModal={closeCheckConnectionModal} handleCheckConnection={handleCheckConnection}/>}
+				
 			</div>
 
 		</div>

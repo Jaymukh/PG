@@ -11,6 +11,7 @@ import Body, { BodyColor, BodyType } from './typography/Body';
 import Switch from './switch/Switch';
 import SearchBar from './search/SearchBar';
 import { VscDiffAdded } from "react-icons/vsc";
+import CheckConnection from '../../components/ui/CheckConnection';
 
 // CSS
 import '../../styles/main.css';
@@ -28,14 +29,16 @@ interface GridViewProps {
     handleEditClick: (data: any) => void;
     handleDelete: (id: string) => void;
     handleAddNew: () => void;
-    handleCheckConnection: (id: string) => void;
     checkConnectionColor?: boolean;
 }
 
-const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange, suggestions, handleEditClick, handleDelete, handleAddNew, handleCheckConnection, checkConnectionColor }: GridViewProps) => {
+const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange, suggestions, handleEditClick, handleDelete, handleAddNew, checkConnectionColor }: GridViewProps) => {
     const [buttonState, setButtonState] = useState<[number, boolean]>([0, false]);
     const [gridData, setGridData] = useState(tData);
     const [checkedStates, setCheckedStates] = useState(gridData.map(() => true));
+    const [openCheckConnection, setOpenCheckConnection] = useState(false);
+    const [selectedUserIndex, setSelectedUserIndex] = useState<number[]>([]);
+    
 
     const toggleSwitch = (index: number) => {
         const newCheckedStates = [...checkedStates];
@@ -45,6 +48,26 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
     useEffect(() => {
         setGridData(tData);
     }, [tData])
+
+    const handleCheckConnection = (value: string) => {
+		setOpenCheckConnection(true);
+		const index = Constants.UFMProfile.findIndex(obj => obj.Id === value);
+		if (index !== -1) {
+			// If already selected, remove it
+			if (selectedUserIndex.includes(index)) {
+				setSelectedUserIndex(selectedUserIndex.filter(selectedIndex => selectedIndex !== index));
+			} else {
+				// If not selected, add it
+				setSelectedUserIndex([...selectedUserIndex, index]);
+			}
+		}
+	}
+
+    const closeCheckConnectionModal = () =>{
+		setOpenCheckConnection(false);
+		//setcheckConnectionColor(true);
+
+	}
 
     return (
         <div className='col-lg-12 col-md-12 col-sm-12 col-12 z-index-0 px-0 d-flex flex-column justify-content-start align-items-center ' style={{ height: '91vh' }}>
@@ -145,7 +168,7 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                             >
                                                 <MdOutlineHub className="fs-20" />
                                             </Button> */}
-                                            <InfoPanel Icon={MdOutlineHub} text='info'  onClick={()=> handleCheckConnection(data['Id'])}/>
+                                            <InfoPanel Icon={MdOutlineHub} text='info'  onClick={()=> handleCheckConnection(data['Id'])} key={index}/>
                                             {/* <Button
                                                 theme={ButtonTheme.muted}
                                                 size={ButtonSize.default}
@@ -248,7 +271,7 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                                 >
                                                     <MdOutlineHub className="fs-20" />
                                                 </Button> */}
-                                                <InfoPanel Icon={MdOutlineHub} text='Check Connection Check Connection Check Connection' classname='color-black-5'  onClick={()=> handleCheckConnection(data['Id'])}/>
+                                                <InfoPanel Icon={MdOutlineHub} text='Check Connection Check Connection Check Connection' classname={selectedUserIndex?.includes(index)? 'color-green-0 ' : 'color-black-5'}  onClick={()=> handleCheckConnection(data['Id'])}/>
                                                 {/* <Button
                                                     theme={ButtonTheme.muted}
                                                     size={ButtonSize.default}
@@ -278,6 +301,8 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                     )
                 }
             </div>
+            {openCheckConnection && 
+					<CheckConnection openCheckConnection={openCheckConnection} closeCheckConnectionModal={closeCheckConnectionModal} />}
 
         </div>
     );
