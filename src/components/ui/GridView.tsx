@@ -124,7 +124,7 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                         ))
                                     }
                                     {gridName != 'Users'
-                                        && <div className="d-flex flex-row justify-content-end align-items-center">
+                                        && <div className="d-flex flex-row justify-content-end align-items-center margin-top-1">
                                             <InfoPanel Icon={MdInfo} text='info' classname='color-black-5' />
                                             <InfoPanel Icon={MdOutlineHub} text='Check Connection' classname='color-black-5' />
                                             <InfoPanel Icon={MdModeEdit} text='edit' onClick={() => handleEditClick(data)} classname='color-black-5' />
@@ -193,7 +193,7 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                             ))
                                         }
                                         {gridName != 'Users'
-                                            && <div className="d-flex flex-row justify-content-end align-items-center">
+                                            && <div className="d-flex flex-row justify-content-end align-items-center margin-top-1">
                                                 <InfoPanel Icon={MdInfo} text='info' classname='color-black-5' />
                                                 <InfoPanel Icon={MdOutlineHub} text='Check Connection' classname='color-black-5' />
                                                 <InfoPanel Icon={MdModeEdit} text='edit' onClick={() => handleEditClick(data)} classname='color-black-5' />
