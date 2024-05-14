@@ -5,19 +5,100 @@ import React from 'react';
 export interface HeaderData {
     key: string;
     option: string;
+    sidebarData: SidebarItem[]
 }
 export const headerData: HeaderData[] = [
     {
         key: 'root',
         option: 'Administrator',
+        sidebarData: [
+            {
+                key: 'root',
+                option: 'Tenants',
+            },
+            {
+                key: 'gitAccounts',
+                option: 'Git Accounts',
+            },
+            {
+                key: 'ufmProfile',
+                option: 'UFM Profiles',
+            },
+            {
+                key: 'users',
+                option: 'Users',
+            }
+        ],
     },
     {
-        key: 'ab',
-        option: 'AB',
+        key: 'packages',
+        option: 'Sync View',
+        sidebarData: [
+            {
+                key: 'packages',
+                option: 'Packages',
+            },
+            {
+                key: 'configuration',
+                option: 'Configuration',
+            },
+            {
+                key: 'userCredentials',
+                option: 'User Credentials',
+            },
+            {
+                key: 'oauthCreadentials',
+                option: 'Oauth Creadentials',
+            },
+            {
+                key: 'keyStore',
+                option: 'Key Store',
+            }
+        ]
     },
     {
-        key: 'abc',
-        option: 'ABC',
+        key: 'backupView',
+        option: 'Backup View',
+        sidebarData: [
+            {
+                key: 'root',
+                option: 'Tenants',
+            },
+            {
+                key: 'gitAccounts',
+                option: 'Git Accounts',
+            },
+            {
+                key: 'ufmProfile',
+                option: 'UFM Profiles',
+            },
+            {
+                key: 'users',
+                option: 'Users',
+            }
+        ]
+    },
+    {
+        key: 'failoverView',
+        option: 'Failover View',
+        sidebarData: [
+            {
+                key: 'root',
+                option: 'Tenants',
+            },
+            {
+                key: 'gitAccounts',
+                option: 'Git Accounts',
+            },
+            {
+                key: 'ufmProfile',
+                option: 'UFM Profiles',
+            },
+            {
+                key: 'users',
+                option: 'Users',
+            }
+        ]
     }
 ];
 
@@ -348,7 +429,7 @@ export const UFMProfile: UfmProfile[] = [
         'Primary Site': 'T1',
         'Secondary Site': 'T2',
         'Gitrepo': 'GITQA',
-        'Last git backupon': ''
+        'Last git backupon': '20-04-2024',
     },
     {
         'Id': '2',
@@ -357,7 +438,7 @@ export const UFMProfile: UfmProfile[] = [
         'Primary Site': 'T1',
         'Secondary Site': 'T2',
         'Gitrepo': 'GITQA',
-        'Last git backupon': ''
+        'Last git backupon': '20-04-2024'
     },
     {
         'Id': '3',
@@ -366,7 +447,7 @@ export const UFMProfile: UfmProfile[] = [
         'Primary Site': 'T1',
         'Secondary Site': 'T2',
         'Gitrepo': 'GITQA',
-        'Last git backupon': ''
+        'Last git backupon': '20-04-2024'
     },
     {
         'Id': '4',
@@ -375,7 +456,7 @@ export const UFMProfile: UfmProfile[] = [
         'Primary Site': 'T1',
         'Secondary Site': 'T2',
         'Gitrepo': 'GITQA',
-        'Last git backupon': ''
+        'Last git backupon': '20-04-2024'
     },
     {
         'Id': '5',
@@ -384,7 +465,7 @@ export const UFMProfile: UfmProfile[] = [
         'Primary Site': 'T1',
         'Secondary Site': 'T2',
         'Gitrepo': 'GITQA',
-        'Last git backupon': ''
+        'Last git backupon': '20-04-2024'
     },
     {
         'Id': '6',
@@ -393,7 +474,7 @@ export const UFMProfile: UfmProfile[] = [
         'Primary Site': 'T1',
         'Secondary Site': 'T2',
         'Gitrepo': 'GITQA',
-        'Last git backupon': ''
+        'Last git backupon': '20-04-2024'
     },
     {
         'Id': '7',
@@ -402,7 +483,7 @@ export const UFMProfile: UfmProfile[] = [
         'Primary Site': 'T1',
         'Secondary Site': 'T2',
         'Gitrepo': 'GITQA',
-        'Last git backupon': ''
+        'Last git backupon': '20-04-2024'
     },
     {
         'Id': '',
@@ -411,7 +492,7 @@ export const UFMProfile: UfmProfile[] = [
         'Primary Site': 'T1',
         'Secondary Site': 'T2',
         'Gitrepo': 'GITQA',
-        'Last git backupon': ''
+        'Last git backupon': '20-04-2024'
     }
 ]
 

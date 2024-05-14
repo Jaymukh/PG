@@ -7,52 +7,55 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import '../styles/main.css';
 
 // Components
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../components/ui/button/Button';
-import { Heading, TypographyColor, TypographyType, TypographyWeight } from '../components/ui/typography/Heading';
-import Body, { BodyColor, BodyType } from '../components/ui/typography/Body';
-import Select, { SelectSize } from '../components/ui/select/Select';
-import { Input } from '../components/ui/input/Input';
-import Drawer from '../components/ui/Drawer';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from './ui/button/Button';
+import { Heading, TypographyColor, TypographyType, TypographyWeight } from './ui/typography/Heading';
+import Body, { BodyColor, BodyType } from './ui/typography/Body';
+import Select, { SelectSize } from './ui/select/Select';
+import { Input } from './ui/input/Input';
+import Drawer from './ui/Drawer';
 import * as Constants from '../utils/Constants';
 import { errorState } from '../states';
 
 // Utilities
 
-interface EditTenantsProps {
-    selectedData?: any;
-    handleCloseDialog: () => void;
-    handleUpdate: (updatedRow: any) => void;
+interface AddTenantsProps {
+    openAddNew: boolean;
+    handleAddNewDrawer: (openAddNew: boolean) => void;
+    handleAddNewData: (updatedRow: any) => void;
 }
 
-const EditTenants: React.FC<EditTenantsProps> = ({
-    selectedData,
-    handleCloseDialog,
-    handleUpdate
+const AddTenants: React.FC<AddTenantsProps> = ({
+    openAddNew,
+    handleAddNewDrawer,
+    handleAddNewData
 }) => {
     const setError = useSetRecoilState(errorState);
-    const [updatedData, setUpdatedData] = useState<any>(selectedData || null);
+    const [newData, setNewdData] = useState<any>({});
+
 
     const handleChangeData = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         e.preventDefault();
         const name = e.target.name as keyof Constants.Tenant; // Explicitly cast to the known keys of User
         const value = e.target.value;
-        setUpdatedData({ ...updatedData, [name]: value });
+        setNewdData({ ...newData, [name]: value });
     }
-    const handleUpdateClick = () => {
-        if (updatedData.Name && updatedData['Host Url'] && updatedData.User && updatedData.Password && updatedData.Environment && updatedData.State) {
-            handleUpdate(updatedData);
+    const handleAddClick = () => {
+        if (newData.Name && newData['Host Url'] && newData.User && newData.Password && newData.Environment && newData.State) {
+            handleAddNewData(newData);
+            console.log(newData);
         }
         else {
             setError({ type: 'Error', message: 'All fields are mendatory!' });
+            console.log(newData);
         }
     };
     return (
         <div className=''>
             <Drawer
-                id='edit'
-                title='Edit'
-                isOpen={selectedData !== null}
-                toggleFunction={handleCloseDialog}
+                id='add'
+                title='Add'
+                isOpen={openAddNew === true}
+                toggleFunction={() => handleAddNewDrawer(false)}
             >
                 <div className='d-flex flex-column align-items-start justify-content-center text-start'>
                     <Heading
@@ -65,7 +68,7 @@ const EditTenants: React.FC<EditTenantsProps> = ({
                     <Input
                         type="text"
                         placeholder="Enter Tenant name"
-                        value={updatedData.Name}
+                        value={newData?.Name}
                         name='Name'
                         onChange={(e) => handleChangeData(e)}
                     />
@@ -79,7 +82,7 @@ const EditTenants: React.FC<EditTenantsProps> = ({
                     <Input
                         type="text"
                         placeholder="Enter Description"
-                        value={updatedData.Description}
+                        value={newData?.Description}
                         name='Description'
                         onChange={(e) => handleChangeData(e)}
                     />
@@ -92,8 +95,9 @@ const EditTenants: React.FC<EditTenantsProps> = ({
                     />
                     <Select
                         options={Constants?.regions}
+                        placeholder='Select region'
                         onChange={(e) => handleChangeData(e)}
-                        value={updatedData?.Region}
+                        value={newData?.Region}
                         labelKey='key'
                         valueKey='key'
                         size={SelectSize.large}
@@ -110,7 +114,7 @@ const EditTenants: React.FC<EditTenantsProps> = ({
                     <Input
                         type="text"
                         placeholder="Enter host url"
-                        value={updatedData['Host Url']}
+                        value={newData['Host Url']}
                         name='Host Url'
                         onChange={(e) => handleChangeData(e)}
                     />
@@ -124,7 +128,7 @@ const EditTenants: React.FC<EditTenantsProps> = ({
                     <Input
                         type="text"
                         placeholder="Enter user"
-                        value={updatedData?.User}
+                        value={newData?.User}
                         name='User'
                         onChange={(e) => handleChangeData(e)}
                     />
@@ -138,7 +142,7 @@ const EditTenants: React.FC<EditTenantsProps> = ({
                     <Input
                         type="password"
                         placeholder="Enter password"
-                        value={updatedData?.Password}
+                        value={newData?.Password}
                         name='Password'
                         onChange={(e) => handleChangeData(e)}
                     />
@@ -151,8 +155,9 @@ const EditTenants: React.FC<EditTenantsProps> = ({
                     />
                     <Select
                         options={Constants?.environments}
+                        placeholder='Select environment'
                         onChange={(e) => handleChangeData(e)}
-                        value={updatedData?.Environment}
+                        value={newData?.Environment}
                         labelKey='key'
                         valueKey='key'
                         size={SelectSize.large}
@@ -168,8 +173,9 @@ const EditTenants: React.FC<EditTenantsProps> = ({
                     />
                     <Select
                         options={Constants?.states}
+                        placeholder='Select state'
                         onChange={(e) => handleChangeData(e)}
-                        value={updatedData?.State}
+                        value={newData?.State}
                         labelKey='key'
                         valueKey='key'
                         size={SelectSize.large}
@@ -180,10 +186,10 @@ const EditTenants: React.FC<EditTenantsProps> = ({
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}
                         variant={ButtonVariant.bordered}
-                        onClick={() => handleUpdateClick()}
+                        onClick={() => handleAddClick()}
                         classname='margin-top-bottom-3 height-3'
                     >
-                        Update
+                        Add
                     </Button>
                 </div>
             </Drawer>
@@ -191,5 +197,5 @@ const EditTenants: React.FC<EditTenantsProps> = ({
     );
 };
 
-export default EditTenants;
+export default AddTenants;
 

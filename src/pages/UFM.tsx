@@ -7,7 +7,7 @@ import React, { useEffect,useState } from 'react';
 // Components
 import { useRecoilValue } from 'recoil';
 import * as Constants from '../utils/Constants';
-import Header from '../components/Header';
+import Header from '../components/ui/Header';
 import SideBar from '../components/ui/SideBar';
 import { sidebarAnchorState } from '../states';
 import TableView from '../components/ui/TableView';
@@ -131,13 +131,13 @@ const UFM = () => {
 	
 	return (
 		<div className='d-flex flex-row w-100 h-100 primary-bg fixed-header overflow-hidden'>
-            <SideBar sidebarData={Constants.sidebarData} />
+            <SideBar  />
             <div style={{ width: Boolean(sidebarAnchor) ? '84vw' : '100vw' }} className=''>
                 <Header />
                 {
 					gridView ?
-						<GridView setGridView={setGridView} gridName='UFM Profiles' tData={UfmProfile} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew} />
-						: <TableView setGridView={setGridView} tableName='UFM Profiles' tData={UfmProfile} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>						
+						<GridView setGridView={setGridView} gridName='UFM Profiles' tData={UfmProfile} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNewDrawer={handleAddNew}/>
+						: <TableView setGridView={setGridView} tableName='UFM Profiles' tData={UfmProfile} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNewDrawer={handleAddNew}/>						
 				}
 				{selectedData &&
 				<EditUFMProfile selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate}/>}

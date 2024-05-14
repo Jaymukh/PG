@@ -6,58 +6,57 @@ import { useRecoilValue } from 'recoil';
 // import '../styles/main.css';
 
 // Components
-import Header from '../components/Header';
+import Header from '../components/ui/Header';
 import SideBar from '../components/ui/SideBar';
-import GridView from '../components/ui/GridView';
 import { sidebarAnchorState } from '../states';
 import * as Constants from '../utils/Constants';
 import TableView from '../components/ui/TableView';
+import GridView from '../components/ui/GridView';
 import EditTenants from '../components/EditTenants';
-import CheckConnection from '../components/ui/CheckConnection';
+import EditGit from '../components/EditGit';
+import AddTenants from '../components/AddTenants';
 
-const Administrator = () => {
+const KeyStore = () => {
 	const sidebarAnchor = useRecoilValue(sidebarAnchorState);
 	const [gridView, setGridView] = useState(false);
-	const [selectedData, setSelectedData] = useState<Constants.Tenant | null>(null);
-	const [tenants, setTenants] = useState(Constants.tenants);
+
+	const [selectedData, setSelectedData] = useState<Constants.GitAccount | null>(null);
+	const [gitAccounts, setGitAccounts] = useState(Constants.gitAccounts);
 	const [openAddNew, setOpenAddNew] = useState(false);
-	const [openCheckConnection, setOpenCheckConnection] = useState(false);
-	const [checkConnectionColor, setcheckConnectionColor] = useState(false);
-	const handleEditClick = (row: Constants.Tenant) => {
-		console.log(row);
+	const handleEditClick = (row: Constants.GitAccount) => {
 		setSelectedData(row);
 	};
 	const handleCloseDialog = () => {
 		setSelectedData(null);
 	};
-	const handleUpdate = (updatedRow: Constants.Tenant) => {
+	const handleUpdate = (updatedRow: Constants.GitAccount) => {
 		// Find the index of the updated tenant in the tenants array
-		const index = tenants.findIndex(tenant => tenant['Id'] === updatedRow['Id']);
-		
+		const index = gitAccounts.findIndex(gitAccount => gitAccount['Id'] === updatedRow['Id']);
+
 		if (index !== -1) {
 			// Create a copy of the tenants array
-			const updatedTenants = [...tenants];
-			
+			const updatedGitAccounts = [...gitAccounts];
+
 			// Update the tenant object at the found index
-			updatedTenants[index] = updatedRow;
-	
+			updatedGitAccounts[index] = updatedRow;
+
 			// Set the state with the updated array
-			setTenants(updatedTenants);
-		}	
+			setGitAccounts(updatedGitAccounts);
+		}
 		setSelectedData(null);
 	};
 
 	const handleDelete = (id: string) => {
 		// Filter out the tenant with the provided ID
-		const updatedTenants = tenants.filter(tenant => tenant['Id'] !== id);
-		
+		const updatedGitAccounts = gitAccounts.filter(gitAccount => gitAccount['Id'] !== id);
+
 		// Update the tenants state with the filtered array
-		setTenants(updatedTenants);
+		setGitAccounts(updatedGitAccounts);
 	};
 
 	// searchbar function
 	const [searchTerm, setSearchTerm] = useState('');
-	var [suggestions, setSuggestions] = useState<Constants.Tenant[]>([]);
+	var [suggestions, setSuggestions] = useState<Constants.GitAccount[]>([]);
 
 	const handleInputChange = (value: string) => {
 		setSearchTerm(value);
@@ -68,55 +67,57 @@ const Administrator = () => {
 			setSuggestions([]);
 		} else {
 			const lowercasedValue = searchTerm.toLowerCase();
-			const result = tenants?.filter((item: Constants.Tenant) => {
+			const result = gitAccounts?.filter((item: Constants.GitAccount) => {
 				const lowercasedName = item['Name']?.toLowerCase();
 				const lowercasedId = item['Id']?.toLowerCase();
 				const lowercasedEnvironment = item['Environment']?.toLowerCase();
 				const lowercasedState = item['State']?.toLowerCase();
 				const lowercasedHostUrl = item['Host Url']?.toLowerCase();
-				const lowercasedCreatedBy = item['Created By']?.toLowerCase();
-				const lowercasedCreatedOn = item['Created On']?.toLowerCase();
 
 				return (
 					lowercasedName.includes(lowercasedValue) ||
 					lowercasedId.includes(lowercasedValue) ||
 					lowercasedEnvironment.includes(lowercasedValue) ||
 					lowercasedState.includes(lowercasedValue) ||
-					lowercasedHostUrl.includes(lowercasedValue) ||
-					lowercasedCreatedBy.includes(lowercasedValue) ||
-					lowercasedCreatedOn.includes(lowercasedValue)
+					lowercasedHostUrl.includes(lowercasedValue)
 				);
 			});
 
 			setSuggestions(result || []);
 		}
 	}, [searchTerm]);
-	 // Add new drawer
-	 const handleAddNew = () => {
-		setOpenAddNew(true);
+
+	// Add new drawer
+	const handleAddNewDrawer = (openAddNew: boolean) => {
+		setOpenAddNew(openAddNew);
 	};
-	const handleCloseAddNew = () => {
+	const handleAddNewData = (newData: any) => {
 		setOpenAddNew(false);
-	};
+
+	}
 
 
 	return (
 		<div className='d-flex flex-row w-100 h-100 primary-bg fixed-header overflow-hidden'>
-			<SideBar sidebarData={Constants.sidebarData} />
+			<SideBar />
 			<div style={{ width: Boolean(sidebarAnchor) ? '84vw' : '100vw' }} className=''>
 				<Header />
 				{
 					gridView ?
-						<GridView setGridView={setGridView} gridName='Tenants' tData={tenants} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew} checkConnectionColor={checkConnectionColor}/>
-						: <TableView setGridView={setGridView} tableName='Tenants' tData={tenants} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNew={handleAddNew}/>						
+						<GridView setGridView={setGridView} gridName='Git Accounts' tData={gitAccounts} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick} handleDelete={handleDelete} handleAddNewDrawer={handleAddNewDrawer} />
+						: <TableView setGridView={setGridView} tableName='Git Accounts' tData={gitAccounts} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick} handleDelete={handleDelete} handleAddNewDrawer={handleAddNewDrawer} />
 				}
+
 				{selectedData &&
-				<EditTenants selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}
-				
+					<EditGit selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />
+				}
+				{openAddNew &&
+					<AddTenants openAddNew={openAddNew} handleAddNewDrawer={handleAddNewDrawer} handleAddNewData={handleAddNewData} />
+				}
 			</div>
 
 		</div>
 	);
 };
 
-export default Administrator;
+export default KeyStore;

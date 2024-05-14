@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Drawer from '../components/ui/Drawer';
-import {Input} from '../components/ui/input/Input';
-import Select, { SelectSize }from '../components/ui/select/Select';
+import { Input } from '../components/ui/input/Input';
+import Select, { SelectSize } from '../components/ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from './ui/button/Button';
 import * as Constants from '../utils/Constants';
 
-interface UFMProfileNewProps{
+interface UFMProfileNewProps {
     openInviteNew: boolean;
     handleCloseInviteNew: () => void;
     setOpenInviteSent: (openInviteSent: boolean) => void;
-   
+
 }
 const UFMProfileNew: React.FC<UFMProfileNewProps> = ({ openInviteNew, handleCloseInviteNew, setOpenInviteSent }) => {
-  return (
-    <div>
-     <Drawer
+    return (
+        <div>
+            <Drawer
                 id='newufmprofile'
                 title='New UFP Profile'
                 isOpen={openInviteNew}
@@ -27,7 +27,7 @@ const UFMProfileNew: React.FC<UFMProfileNewProps> = ({ openInviteNew, handleClos
                         placeholder="Enter here profile name"
                         // value={newData.name}
                         name='profile name'
-                    />     
+                    />
                     <h6 className='my-1 font-87-5 text-start fw-bold mt-3'>Enviroment</h6>
                     <Select
                         options={Constants?.Environment}
@@ -45,7 +45,7 @@ const UFMProfileNew: React.FC<UFMProfileNewProps> = ({ openInviteNew, handleClos
                         valueKey='value'
                         size={SelectSize.large}
                         name='company'
-                        
+
                     />
                     <h6 className='mt-1 font-87-5 text-start fw-bold mt-3'>Secondary Site</h6>
                     <Select
@@ -75,32 +75,33 @@ const UFMProfileNew: React.FC<UFMProfileNewProps> = ({ openInviteNew, handleClos
                         name='company_type'
                     />
                     {/* <p className='my-3 Note d-flex justify-content-center align-items-center'>Note: Admins will be able to invite users to the platform</p> */}
-                    <div className = "d-flex flex-row">
-                    <Button
-                        theme={ButtonTheme.primary}
-                        size={ButtonSize.large}
-                        variant={ButtonVariant.bordered}
-                        // onClick={() => handleSubmitInviteNew()}
-                        classname='mt-4 mb-3 margin-right-2'
-                        
-                    > 
-                        Draft
-                    </Button>
-                    <Button
-                        theme={ButtonTheme.primary}
-                        size={ButtonSize.large}
-                        variant={ButtonVariant.bordered}
-                        // onClick={() => handleSubmitInviteNew()}
-                        classname='mt-4 mb-3'
-                        
-                    > 
-                        Save
-                    </Button>
+                    <div className='d-flex flex-row justify-content-between align-items-center'>
+                        <Button
+                            theme={ButtonTheme.primary}
+                            size={ButtonSize.large}
+                            variant={ButtonVariant.bordered}
+                            // onClick={() => handleSubmitInviteNew()}
+                            classname='margin-right-1'
+
+                        >
+                            Draft
+                        </Button>
+                        <Button
+                            theme={ButtonTheme.primary}
+                            size={ButtonSize.large}
+                            variant={ButtonVariant.bordered}
+                            // onClick={() => handleSubmitInviteNew()}
+                            classname='margin-left-1'
+
+                        >
+                            Save
+                        </Button>
                     </div>
+
                 </div>
             </Drawer>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default UFMProfileNew;

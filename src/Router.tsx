@@ -18,10 +18,15 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ auth, redirectPath }) =
 const Router = () => {
     // const auth = useRecoilValue(authState);
 
-    const Home = React.lazy(() => import("./pages/Administrator"));
+    const Home = React.lazy(() => import("./pages/Home"));
     const UFM = React.lazy(() => import("./pages/UFM"));
     const GIT = React.lazy(() => import("./pages/GIT"));
     const Users = React.lazy(() => import("./pages/Users"));
+    const Packages = React.lazy(() => import("./pages/Packages"));
+    const Configuration = React.lazy(() => import("./pages/Configuration"));
+    const UserCredentials = React.lazy(() => import("./pages/UserCredentials"));
+    const OAuthCredentials = React.lazy(() => import("./pages/OAuthCredentials"));
+    const KeyStore = React.lazy(() => import("./pages/KeyStore"));
 
     return (
         <Suspense >
@@ -30,6 +35,11 @@ const Router = () => {
                 <Route path={RouteConstants.ufmProfile} element={<UFM />} />
                 <Route path={RouteConstants.gitAccounts} element={<GIT />} />
                 <Route path={RouteConstants.users} element={<Users />} />
+                <Route path={RouteConstants.packages} element={<Packages />} />
+                <Route path={RouteConstants.configuration} element={<Configuration />} />
+                <Route path={RouteConstants.userCredentials} element={<UserCredentials />} />
+                <Route path={RouteConstants.oauthCreadentials} element={<OAuthCredentials />} />
+                <Route path={RouteConstants.keyStore} element={<KeyStore />} />
             </Routes>
         </Suspense >
     );

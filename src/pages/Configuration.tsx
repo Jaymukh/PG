@@ -16,7 +16,7 @@ import EditTenants from '../components/EditTenants';
 import EditGit from '../components/EditGit';
 import AddTenants from '../components/AddTenants';
 
-const GIT = () => {
+const Configuration = () => {
 	const sidebarAnchor = useRecoilValue(sidebarAnchorState);
 	const [gridView, setGridView] = useState(false);
 
@@ -120,4 +120,4 @@ const GIT = () => {
 	);
 };
 
-export default GIT;
+export default Configuration;
