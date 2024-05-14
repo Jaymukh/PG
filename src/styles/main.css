@@ -4,7 +4,6 @@
     text-align: center;
     background-color: var(--app-background);
     height: 100vh;
-    /* font-family: 'Poppins', sans-serif; */
     font-family: 'Montserrat', Arial, sans-serif;
     color: var(--blue-0);
 }
@@ -215,7 +214,7 @@ th {
     width: fit-content;
     max-width: 12rem;
     height: auto;
-    min-height: 2.25vh;
+    /* min-height: 2.25vh; */
     padding: 0.5rem;
     font-size: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

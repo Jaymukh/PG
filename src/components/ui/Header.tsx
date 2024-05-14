@@ -8,32 +8,31 @@ import { MdOutlineMenu } from "react-icons/md";
 // import '../../styles/main.css';
 
 // Components
-import { sidebarAnchorState, visiblePanelState } from '../states';
+import { Heading, TypographyColor, TypographyType, TypographyWeight } from './typography/Heading';
+import { headerDataState, sidebarAnchorState, visiblePanelState } from '../../states';
+import AccountOptions from '../AccountOptions';
 
 // Utilities
-import Logo from '../utils/images/pg.svg';
-import { RouteConstants } from '../constants/routeConstants';
-
-// import { spinnerState } from '../../states';
-import AccountOptions from './AccountOptions';
-import Body, { BodyColor, BodyType } from './ui/typography/Body';
-import * as Constants from '../utils/Constants';
-import SideBar from './ui/SideBar';
-import { Heading, TypographyColor, TypographyType, TypographyWeight } from './ui/typography/Heading';
+import Logo from '../../utils/images/pg.svg';
+import { RouteConstants } from '../../constants/routeConstants';
+import * as Constants from '../../utils/Constants';
 
 
 const Header = () => {
     const navigate = useNavigate();
     const setVisiblePanel = useSetRecoilState(visiblePanelState);
+    const setHeaderData = useSetRecoilState(headerDataState);
     const [sidebarAnchor, setSidebarAnchor] = useRecoilState(sidebarAnchorState);
 
     const onLogoClick = () => {
         navigate(RouteConstants.root);
     }
 
-    const handleClickItem = (route: any) => {
+    const handleClickItem = (data: any) => {
+        const route = data.key;
         setVisiblePanel('/' + route);
         navigate(RouteConstants[route]);
+        setHeaderData(data);
     }
     const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
         Boolean(sidebarAnchor) ? setSidebarAnchor(null) : setSidebarAnchor(event.currentTarget);
@@ -54,7 +53,7 @@ const Header = () => {
                     {Constants.headerData.map((data, index) => (
                         <li key={data.key}
                             className='header-item d-flex'
-                            onClick={() => handleClickItem(data.key)}
+                            onClick={() => handleClickItem(data)}
                         >
                             <Heading
                                 title={data.option}

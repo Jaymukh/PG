@@ -1,6 +1,6 @@
 // External libraries
 import { useEffect, useRef } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useNavigate } from 'react-router-dom';
 
 // CSS
@@ -8,18 +8,17 @@ import '../../styles/main.css';
 
 // Components
 import Body, { BodyColor, BodyType } from './typography/Body';
-import { sidebarAnchorState, visiblePanelState } from '../../states';
+import { headerDataState, sidebarAnchorState, visiblePanelState } from '../../states';
 
 // Utilities
 import { RouteConstants } from "../../constants/routeConstants";
 
-interface SideBarProps {
-    sidebarData: any;
-}
-const SideBar = ({sidebarData}: SideBarProps) => {
+
+const SideBar = () => {
     const navigate = useNavigate();
     const menuRef = useRef<HTMLDivElement | null>(null);
 	const [sidebarAnchor, setSidebarAnchor] = useRecoilState(sidebarAnchorState);
+    const headerData = useRecoilValue(headerDataState);
     const setVisiblePanel = useSetRecoilState(visiblePanelState);
 
 
@@ -50,7 +49,7 @@ const SideBar = ({sidebarData}: SideBarProps) => {
         <div className="" >            
             {Boolean(sidebarAnchor) 
             && (<ul className='side-menu'>
-                {sidebarData.map((item: any) => (
+                {headerData.sidebarData.map((item: any) => (
                     <li
                         key={item.key}
                         className='side-menu-item d-flex fs-16'

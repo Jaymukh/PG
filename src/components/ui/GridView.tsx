@@ -126,9 +126,9 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                     {gridName != 'Users'
                                         && <div className="d-flex flex-row justify-content-end align-items-center">
                                             <InfoPanel Icon={MdInfo} text='info' classname='color-black-5' />
-                                                <InfoPanel Icon={MdOutlineHub} text='Check Connection' classname='color-black-5' />
-                                                <InfoPanel Icon={MdModeEdit} text='edit' onClick={() => handleEditClick(data)} classname='color-black-5' />
-                                                <InfoPanel Icon={MdDeleteSweep} text='delete' onClick={() => handleDelete(data['Id'])} classname='color-rejected' />
+                                            <InfoPanel Icon={MdOutlineHub} text='Check Connection' classname='color-black-5' />
+                                            <InfoPanel Icon={MdModeEdit} text='edit' onClick={() => handleEditClick(data)} classname='color-black-5' />
+                                            <InfoPanel Icon={MdDeleteSweep} text='delete' onClick={() => handleDelete(data['Id'])} classname='color-rejected' />
                                         </div>
                                     }
                                 </div>

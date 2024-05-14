@@ -6,9 +6,10 @@ import Search from './search/Search';
 import { Button, ButtonSize, ButtonTheme, ButtonVariant } from './button/Button';
 import * as Constants from '../../utils/Constants'
 import { BiSolidDownArrow, BiSolidUpArrow } from 'react-icons/bi';
-import { MdDeleteSweep, MdModeEdit } from 'react-icons/md';
+import { MdDeleteSweep, MdInfo, MdModeEdit, MdOutlineHub } from 'react-icons/md';
 import { VscDiffAdded } from "react-icons/vsc";
 import SearchBar from './search/SearchBar';
+import InfoPanel from './InfoPanel';
 
 // CSS
 // import '../styles/main.css';
@@ -23,14 +24,14 @@ interface TableViewProps {
     suggestions: any[];
     handleEditClick: (row: any) => void;
     handleDelete: (id: string) => void;
-    handleAddNewDrawer:(openAddNew: boolean) => void;
+    handleAddNewDrawer: (openAddNew: boolean) => void;
 
 }
 
-const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, handleInputChange, handleEditClick, handleDelete,handleAddNewDrawer }: TableViewProps) => {
+const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, handleInputChange, handleEditClick, handleDelete, handleAddNewDrawer }: TableViewProps) => {
     const [buttonState, setButtonState] = useState<[number, boolean]>([0, false]);
     const [tableData, setTableData] = useState(tData);
-    
+
     // function for sorting
     const handleSortTable = (item: any, order: string, index: number) => {
         setButtonState([index, order === 'asc' ? true : false]);
@@ -64,7 +65,7 @@ const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, han
         setTableData(tData);
     }, [tData])
 
-   
+
 
     return (
         <div className='col-lg-12 col-md-12 col-sm-12 col-12 z-index-0 px-0 d-flex flex-column justify-content-start align-items-center ' style={{ height: '91vh' }}>
@@ -96,7 +97,7 @@ const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, han
                         classname=''
                         onClick={() => handleAddNewDrawer(true)}
                     >
-                        <VscDiffAdded className="fs-30"/>
+                        <VscDiffAdded className="fs-30" />
                     </Button>
 
                 </div>
@@ -150,8 +151,8 @@ const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, han
                                                 </td>
                                             ))}
                                         {tableName != 'Users'
-                                            && <td className='text-center' style={{ whiteSpace: 'nowrap' }}>
-                                                <Button
+                                            && <td className='text-center d-flex flex-row justify-content-center align-items-center' style={{ whiteSpace: 'nowrap' }}>
+                                                {/* <Button
                                                     theme={ButtonTheme.muted}
                                                     size={ButtonSize.default}
                                                     variant={ButtonVariant.transparent}
@@ -166,7 +167,13 @@ const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, han
                                                     onClick={() => handleDelete(row['Id'])}
                                                 >
                                                     <MdDeleteSweep className="fs-20" />
-                                                </Button>
+                                                </Button> */}
+                                                <div className='d-flex flex-row align-items-center'>
+                                                    <InfoPanel Icon={MdInfo} text='info' classname='color-black-5' />
+                                                    <InfoPanel Icon={MdOutlineHub} text='Check Connection' classname='color-black-5' />
+                                                    <InfoPanel Icon={MdModeEdit} text='edit' onClick={() => handleEditClick(row)} classname='color-black-5' />
+                                                    <InfoPanel Icon={MdDeleteSweep} text='delete' onClick={() => handleDelete(row['Id'])} classname='color-rejected' />
+                                                </div>
                                             </td>
                                         }
                                     </tr>
@@ -188,8 +195,8 @@ const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, han
                                                     </td>
                                                 ))}
                                             {tableName != 'Users'
-                                                && <td className='text-center' style={{ whiteSpace: 'nowrap' }}>
-                                                    <Button
+                                                && <td className='text-center d-flex flex-row justify-content-center align-items-center' style={{ whiteSpace: 'nowrap' }}>
+                                                    {/* <Button
                                                         theme={ButtonTheme.muted}
                                                         size={ButtonSize.default}
                                                         variant={ButtonVariant.transparent}
@@ -204,7 +211,14 @@ const TableView = ({ setGridView, tableName, tData, searchTerm, suggestions, han
                                                         onClick={() => handleDelete(row['Id'])}
                                                     >
                                                         <MdDeleteSweep className="fs-20" />
-                                                    </Button>
+                                                    </Button> */}
+                                                    <div className='d-flex flex-row align-items-center'>
+                                                        <InfoPanel Icon={MdInfo} text='info' classname='color-black-5' />
+                                                        <InfoPanel Icon={MdOutlineHub} text='Check Connection' classname='color-black-5' />
+                                                        <InfoPanel Icon={MdModeEdit} text='edit' onClick={() => handleEditClick(row)} classname='color-black-5' />
+                                                        <InfoPanel Icon={MdDeleteSweep} text='delete' onClick={() => handleDelete(row['Id'])} classname='color-rejected' />
+                                                    </div>
+
                                                 </td>
                                             }
                                         </tr>

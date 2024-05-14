@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 // import '../styles/main.css';
 
 // Components
-import Header from '../components/Header';
+import Header from '../components/ui/Header';
 import SideBar from '../components/ui/SideBar';
 import { useRecoilValue } from 'recoil';
 import { sidebarAnchorState } from '../states';
@@ -93,7 +93,7 @@ const Users = () => {
 	
 	return (
 		<div className='d-flex flex-row w-100 h-100 primary-bg fixed-header overflow-hidden'>
-			<SideBar sidebarData={Constants.sidebarData} />
+			<SideBar />
 			<div style={{width: Boolean(sidebarAnchor) ? '84vw' : '100vw'}} className=''>
 				<Header />
 				{

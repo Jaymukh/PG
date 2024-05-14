@@ -7,7 +7,7 @@ import React, { useEffect,useState } from 'react';
 // Components
 import { useRecoilValue } from 'recoil';
 import * as Constants from '../utils/Constants';
-import Header from '../components/Header';
+import Header from '../components/ui/Header';
 import SideBar from '../components/ui/SideBar';
 import { sidebarAnchorState } from '../states';
 import TableView from '../components/ui/TableView';
@@ -126,7 +126,7 @@ const UFM = () => {
 	
 	return (
 		<div className='d-flex flex-row w-100 h-100 primary-bg fixed-header overflow-hidden'>
-            <SideBar sidebarData={Constants.sidebarData} />
+            <SideBar  />
             <div style={{ width: Boolean(sidebarAnchor) ? '84vw' : '100vw' }} className=''>
                 <Header />
                 {
