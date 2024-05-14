@@ -87,9 +87,11 @@ const Users = () => {
 	const handleAddNew = () => {
 		setOpenAddNew(true);
 	};
-	const handleCloseAddNew = () => {
-		setOpenAddNew(false);
-	};
+	// const handleCloseAddNew = () => {
+	// 	setOpenAddNew(false);
+	// };
+
+	
 	
 	return (
 		<div className='d-flex flex-row w-100 h-100 primary-bg fixed-header overflow-hidden'>
@@ -101,6 +103,7 @@ const Users = () => {
 						<GridView setGridView={setGridView} gridName='Users' tData={users} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNewDrawer={handleAddNew}/>
 						: <TableView setGridView={setGridView} tableName='Users' tData={users} searchTerm={searchTerm} handleInputChange={handleInputChange} suggestions={suggestions} handleEditClick={handleEditClick}  handleDelete={handleDelete} handleAddNewDrawer={handleAddNew}/>						
 				}
+				
 			</div>
 		</div>
 	);
