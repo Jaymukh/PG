@@ -16,6 +16,8 @@ import EditUFMProfile from '../components/EditUFMProfile';
 import ConfirmDelete from '../components/ConfirmDelete';
 import UFMProfileNew from '../components/UFMProfileNew';
 
+
+
 const UFM = () => {
 	const sidebarAnchor = useRecoilValue(sidebarAnchorState);
     const [gridView, setGridView] = useState(false);
@@ -25,7 +27,9 @@ const UFM = () => {
 	const [selectedUserId, setSelectedUserId] = useState<string>('');
 	const [openAddNew, setOpenAddNew] = useState(false);
 	const [openInviteSent, setOpenInviteSent] = useState(false);
-
+	
+	
+ 
 	const handleEditClick = (row: Constants.UfmProfile) => {
 		setSelectedData(row);
 	};
@@ -123,6 +127,7 @@ const UFM = () => {
 	const handleCloseAddNew = () => {
 		setOpenAddNew(false);
 	};
+
 	
 	return (
 		<div className='d-flex flex-row w-100 h-100 primary-bg fixed-header overflow-hidden'>
@@ -141,6 +146,7 @@ const UFM = () => {
 					closeConfirmDeleteModal={closeConfirmDeleteModal} handleDeleteClick={handleDeleteClick} />}
 				{openAddNew &&
 				<UFMProfileNew openInviteNew={openAddNew}  handleCloseInviteNew={handleCloseAddNew} setOpenInviteSent={setOpenInviteSent} />}
+				
             </div>
 
         </div>

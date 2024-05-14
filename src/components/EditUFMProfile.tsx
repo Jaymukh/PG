@@ -21,8 +21,7 @@ interface UFMProfileNewProps{
 const EditUFMProfile: React.FC<UFMProfileNewProps> = ({ selectedData, handleCloseDialog, handleUpdate }) => {
     const handleUpdateClick = () => {
             handleUpdate(selectedData);
-            // setError({ type: 'Error', message: 'All fields are mendatory!' });
-        
+            // setError({ type: 'Error', message: 'All fields are mendatory!' });    
     };
     return (
     <div>
