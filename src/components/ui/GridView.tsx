@@ -29,6 +29,7 @@ interface GridViewProps {
     handleEditClick: (data: any) => void;
     handleDelete: (id: string) => void;
 <<<<<<< HEAD
+<<<<<<< HEAD
     handleAddNewDrawer: (openAddNew: boolean) => void;
 }
 
@@ -40,6 +41,13 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
 
 const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange, suggestions, handleEditClick, handleDelete, handleAddNew, checkConnectionColor }: GridViewProps) => {
 >>>>>>> c5b743b3463c12048903c5203cca2ae8b71df4fd
+=======
+handleAddNewDrawer: (openAddNew: boolean) => void;
+    checkConnectionColor?: boolean;
+}
+
+const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange, suggestions, handleEditClick, handleDelete, handleAddNewDrawer, checkConnectionColor }: GridViewProps) => {
+>>>>>>> 039b9d4e9cf8fd22be49582bc3d8c6afa00816a8
     const [buttonState, setButtonState] = useState<[number, boolean]>([0, false]);
     const [gridData, setGridData] = useState(tData);
     const [checkedStates, setCheckedStates] = useState(gridData.map(() => true));
@@ -158,11 +166,14 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                     {gridName != 'Users'
                                         && <div className="d-flex flex-row justify-content-end align-items-center">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                             <InfoPanel Icon={MdInfo} text='info' classname='color-black-5' />
                                             <InfoPanel Icon={MdOutlineHub} text='Check Connection' classname='color-black-5' />
                                             <InfoPanel Icon={MdModeEdit} text='edit' onClick={() => handleEditClick(data)} classname='color-black-5' />
                                             <InfoPanel Icon={MdDeleteSweep} text='delete' onClick={() => handleDelete(data['Id'])} classname='color-rejected' />
 =======
+=======
+>>>>>>> 039b9d4e9cf8fd22be49582bc3d8c6afa00816a8
                                             <Button
                                                 theme={ButtonTheme.muted}
                                                 size={ButtonSize.default}
@@ -202,7 +213,10 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                                 <MdDeleteSweep className="fs-20" />
                                             </Button> */}
                                             <InfoPanel Icon={MdDeleteSweep} text='info' onClick={() => handleDelete(data['Id'])} />
+<<<<<<< HEAD
 >>>>>>> c5b743b3463c12048903c5203cca2ae8b71df4fd
+=======
+>>>>>>> 039b9d4e9cf8fd22be49582bc3d8c6afa00816a8
                                         </div>
                                     }
                                 </div>
@@ -270,8 +284,11 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                             && <div className="d-flex flex-row justify-content-end align-items-center">
                                                 <InfoPanel Icon={MdInfo} text='info' classname='color-black-5' />
 <<<<<<< HEAD
+<<<<<<< HEAD
                                                 <InfoPanel Icon={MdOutlineHub} text='Check Connection' classname='color-black-5' />
 =======
+=======
+>>>>>>> 039b9d4e9cf8fd22be49582bc3d8c6afa00816a8
                                                 {/* <Button
                                                     theme={ButtonTheme.muted}
                                                     size={ButtonSize.default}
@@ -290,7 +307,10 @@ const GridView = ({ setGridView, gridName, tData, searchTerm, handleInputChange,
                                                 >
                                                     <MdModeEdit className="fs-20" />
                                                 </Button> */}
+<<<<<<< HEAD
 >>>>>>> c5b743b3463c12048903c5203cca2ae8b71df4fd
+=======
+>>>>>>> 039b9d4e9cf8fd22be49582bc3d8c6afa00816a8
                                                 <InfoPanel Icon={MdModeEdit} text='edit' onClick={() => handleEditClick(data)} classname='color-black-5' />
                                                 <InfoPanel Icon={MdDeleteSweep} text='delete' onClick={() => handleDelete(data['Id'])} classname='color-rejected' />
                                             </div>

@@ -14,7 +14,6 @@ import * as Constants from '../utils/Constants';
 import TableView from '../components/ui/TableView';
 import EditTenants from '../components/EditTenants';
 import AddTenants from '../components/AddTenants';
-import CheckConnection from '../components/ui/CheckConnection';
 
 const Home = () => {
 	const sidebarAnchor = useRecoilValue(sidebarAnchorState);
@@ -22,8 +21,6 @@ const Home = () => {
 	const [selectedData, setSelectedData] = useState<Constants.Tenant | null>(null);
 	const [tenants, setTenants] = useState(Constants.tenants);
 	const [openAddNew, setOpenAddNew] = useState(false);
-	const [openCheckConnection, setOpenCheckConnection] = useState(false);
-	const [checkConnectionColor, setcheckConnectionColor] = useState(false);
 	const handleEditClick = (row: Constants.Tenant) => {
 		console.log(row);
 		setSelectedData(row);
